@@ -1,0 +1,3914 @@
+#-------------------------------------------------------------------------------------------
+# VHDL Xilinx Unisim Library component snippets
+# Device:               Spartan-6, Virtex-5, Virtex-6, 7-Series, All Ultrascale,
+#                       All Zynq, Versal
+# Author:               ZirconfleX
+# Purpose:              Snippets for ATOM editor created from the Xilinx
+#                       UNISIM component libraries.
+# Tools:                Atom Editor
+# Limitations:          None
+#
+# Version:              0.0.2
+# Filename:             snippets.cson
+# Date Created:         17Jan19
+# Date Last Modified:   24Mar20
+#-------------------------------------------------------------------------------------------
+# Disclaimer:
+#		This file is delivered as is.
+#       The supplier cannot be held accountable for any typo or other flaw in this file.
+#       The supplier cannot be held accountable if Xilinx modifies whatsoever to its
+#       library of components/primitives.
+#-------------------------------------------------------------------------------------------
+#
+'.source.vhdl':
+    'BITSLICE_CONTROL':
+        'prefix': 'BITSLICE_CONTROL'
+        'body': """
+            ${1:FileName}_I_Btslce_Ctrl_${2:0} : BITSLICE_CONTROL
+                generic map (
+                    CTRL_CLK            => "EXTERNAL",  -- string
+                    DIV_MODE            => "DIV2",      -- string
+                    EN_CLK_TO_EXT_NORTH => "DISABLE",   -- string
+                    EN_CLK_TO_EXT_SOUTH => "DISABLE",   -- string
+                    EN_DYN_ODLY_MODE    => "FALSE",     -- string
+                    EN_OTHER_NCLK       => "FALSE",     -- string
+                    EN_OTHER_PCLK       => "FALSE",     -- string
+                    IDLY_VT_TRACK       => "TRUE",      -- string
+                    INV_RXCLK           => "FALSE",     -- string
+                    ODLY_VT_TRACK       => "TRUE",      -- string
+                    QDLY_VT_TRACK       => "TRUE",      -- string
+                    READ_IDLE_COUNT     => "00" & X"0", -- std_logic_vector[5:0]
+                    REFCLK_SRC          => "PLLCLK",    -- string
+                    ROUNDING_FACTOR     => 16,          -- integer
+                    RXGATE_EXTEND       => "FALSE",     -- string
+                    RX_CLK_PHASE_N      => "SHIFT_0",   -- string
+                    RX_CLK_PHASE_P      => "SHIFT_0",   -- string
+                    RX_GATING           => "DISABLE",   -- string
+                    SELF_CALIBRATE      => "ENABLE",    -- string
+                    SERIAL_MODE         => "FALSE",     -- string
+                    TX_GATING           => "DISABLE",   -- string
+                    SIM_SPEEDUP         => "FAST",      -- string
+                    SIM_VERSION         => 2.0          -- real
+                )
+                port map (
+                    RIU_CLK             => $3, -- in
+                    RIU_WR_EN           => $4, -- in
+                    RIU_NIBBLE_SEL      => $5, -- in
+                    RIU_ADDR            => $6, -- in [5:0]
+                    RIU_WR_DATA         => $7, -- in [15:0]
+                    RIU_RD_DATA         => $8, -- out [15:0]
+                    RIU_VALID           => $9, -- out
+                    PLL_CLK             => $10 -- in
+                    REFCLK              => $11,-- in
+                    RST                 => $12, -- in
+                    EN_VTC              => $13, -- in
+                    VTC_RDY             => $14, -- out
+                    DLY_RDY             => $15, -- out
+                    DYN_DCI             => $16, -- out [6:0]
+                    TBYTE_IN            => $17, -- in [3:0]
+                    PHY_RDEN            => $18, -- in [3:0]
+                    PHY_RDCS0           => $29, -- in [3:0]
+                    PHY_RDCS1           => $20, -- in [3:0]
+                    PHY_WRCS0           => $21, -- in [3:0]
+                    PHY_WRCS1           => $22, -- in [3:0]
+                    CLK_FROM_EXT        => $23, -- in
+                    NCLK_NIBBLE_IN      => $24, -- in
+                    PCLK_NIBBLE_IN      => $25, -- in
+                    NCLK_NIBBLE_OUT     => $26, -- out
+                    PCLK_NIBBLE_OUT     => $27, -- out
+                    CLK_TO_EXT_NORTH    => $28, -- out
+                    CLK_TO_EXT_SOUTH    => $29, -- out
+                    RX_BIT_CTRL_OUT0    => $30, -- out [39:0]
+                    RX_BIT_CTRL_OUT1    => $31, -- out [39:0]
+                    RX_BIT_CTRL_OUT2    => $32, -- out [39:0]
+                    RX_BIT_CTRL_OUT3    => $33, -- out [39:0]
+                    RX_BIT_CTRL_OUT4    => $34, -- out [39:0]
+                    RX_BIT_CTRL_OUT5    => $35, -- out [39:0]
+                    RX_BIT_CTRL_OUT6    => $36, -- out [39:0]
+                    RX_BIT_CTRL_IN0     => $37, -- in [39:0]
+                    RX_BIT_CTRL_IN1     => $38, -- in [39:0]
+                    RX_BIT_CTRL_IN2     => $39, -- in [39:0]
+                    RX_BIT_CTRL_IN3     => $40, -- in [39:0]
+                    RX_BIT_CTRL_IN4     => $41, -- in [39:0]
+                    RX_BIT_CTRL_IN5     => $42, -- in [39:0]
+                    RX_BIT_CTRL_IN6     => $43, -- in [39:0]
+                    TX_BIT_CTRL_OUT0    => $44, -- out [39:0]
+                    TX_BIT_CTRL_OUT1    => $45, -- out [39:0]
+                    TX_BIT_CTRL_OUT2    => $46, -- out [39:0]
+                    TX_BIT_CTRL_OUT3    => $47, -- out [39:0]
+                    TX_BIT_CTRL_OUT4    => $48, -- out [39:0]
+                    TX_BIT_CTRL_OUT5    => $49, -- out [39:0]
+                    TX_BIT_CTRL_OUT6    => $50, -- out [39:0]
+                    TX_BIT_CTRL_IN0     => $51, -- in [39:0]
+                    TX_BIT_CTRL_IN1     => $52, -- in [39:0]
+                    TX_BIT_CTRL_IN2     => $53, -- in [39:0]
+                    TX_BIT_CTRL_IN3     => $54, -- in [39:0]
+                    TX_BIT_CTRL_IN4     => $55, -- in [39:0]
+                    TX_BIT_CTRL_IN5     => $56, -- in [39:0]
+                    TX_BIT_CTRL_IN6     => $57, -- in [39:0]
+                    TX_BIT_CTRL_OUT_TRI => $58,  -- out [39:0]
+                    TX_BIT_CTRL_IN_TRI  => $59-- in [39:0]
+                );
+        """
+
+    'BOUNDARY_SCAN':
+        'prefix': 'BSCANE2'
+        'body': """
+            ${1:FileName}_I_Bscane2_${2:0} : BSCANE2
+                generic map (DISABLE_JTAG => "FALSE", JTAG_CHAIN => 1)
+                port map (
+                    TDI     => $3, -- out
+                    TCK     => $3, -- out
+                    TMS     => $4, -- out
+                    TDO     => $5, -- in
+                    DRCK    => $6, -- out
+                    SEL     => $7, -- out
+                    SHIFT   => $8, -- out
+                    CAPTURE => $9, -- out
+                    RESET   => $10 -- out
+                    UPDATE  => $11, -- out
+                    RUNTEST => $12 -- out
+                );
+        """
+
+    'BUFCE_LEAF':
+        'prefix': 'BUFCE_LEAF'
+        'body': """
+            ${1:FileName}_I_Bufce_Leaf_${2:0} : BUFCE_LEAF
+                generic map (
+                    CE_TYPE         => "SYNC", -- string
+                    IS_CE_INVERTED  => '0', -- std_ulogic
+                    IS_I_INVERTED   => '0' -- std_ulogic
+                )
+                port map (
+                    I   => $3, -- in
+                    CE  => $4, -- in
+                    O   => $5 -- out
+                );
+        """
+
+    'BUFCE_ROW':
+        'prefix': 'BUFCE_ROW'
+        'body': """
+            ${1:FileName}_I_Bufce_Row_${2:0} : BUFCE_ROW
+                generic map (
+                    CE_TYPE         => "SYNC", -- string
+                    IS_CE_INVERTED  => '0', -- std_ulogic
+                    IS_I_INVERTED   => '0' -- std_ulogic
+                )
+                port map (
+                    I   => $3, -- in
+                    CE  => $4, -- in
+                    O   => $5 -- out
+                );
+        """
+
+    'BUFG':
+        'prefix': 'BUFG'
+        'body': """
+            ${1:FileName}_I_Bufg_${2:0} :  BUFG port map (I => $3, O => $4);
+        """
+
+    'BUFG_GT':
+        'prefix': 'BUFG_GT'
+        'body': """
+            ${1:FileName}_I_Btslce_Ctrl_${2:0} : BUFG_GT
+                generic map (IS_CLR_INVERTED => $2) -- '0'
+                port map (
+                    I       => $3, -- in
+                    CE      => $4, -- in
+                    CEMASK  => $5, -- in
+                    CLR     => $6, -- in
+                    CLRMASK => $7, -- in
+                    DIV     => $8, -- in [2:0]
+                    O       => $9 -- out
+                );
+        """
+
+    'BUFG_GT_SYNC':
+        'prefix': 'BUFG_GT_SYNC'
+        'body': """
+            ${1:FileName}_I_Bufg_Gt_Sync_${2:0} : BUFG_GT_SYNC
+                port map (
+                    CLK     => $3, -- in
+                    CLR     => $4, -- in
+                    CE      => $5, -- in
+                    CESYNC  => $6, -- out
+                    CLRSYNC => $7 -- out
+                );
+        """
+
+    'BUFG_PS':
+        'prefix': 'BUFG_PS'
+        'body': """
+            ${1:FileName}_I_Bufg_Ps_${2:0} : BUFG_PS
+                generic map (SIM_DEVICE => "ULTRASCALE_PLUS", STARTUP_SYNC => "FALSE");
+                port map (I => $3, O => $4);
+        """
+
+    'BUFGCE':
+        'prefix': 'BUFGCE'
+        'body': """
+            ${1:FileName}_I_Bufgce_${2:0} : BUFGCE
+            generic map (
+                CE_TYPE        => "SYNC", -- string
+                IS_CE_INVERTED => '0', -- std_ukogic
+                IS_I_INVERTED  => '0' -- std_ulogic
+            )
+            port map (
+                I  => $3, -- in
+                CE => $4, -- in
+                O  => $5 -- out
+            );
+        """
+
+    'BUFGCE_DIV':
+        'prefix': 'BUFGCE_DIV'
+        'body': """
+            ${1:FileName}_I_Bufgce_Div_${2:0} : BUFGCE_DIV
+                generic map (
+                    BUFGCE_DIVIDE   => 1, -- integer
+                    IS_CE_INVERTED  => '0', -- std_ulogic
+                    IS_CLR_INVERTED => '0', -- std_ulogic
+                    IS_I_INVERTED   => '0' -- std_ulogic
+                )
+                port map (
+                    I   => $3, -- in
+                    CE  => $4, -- in
+                    CLR => $5, -- in
+                    O   => $6 -- out
+                );
+        """
+
+    'BUFGCTRL':
+        'prefix': 'BUFGCTRL'
+        'body': """
+            ${1:FileName}_I_Bufgctrl_${2:0} : BUFGCTRL
+                generic map (
+                    CE_TYPE_CE0         => "SYNC",          -- string
+                    CE_TYPE_CE1         => "SYNC",          -- string
+                    INIT_OUT            => 0,               -- integer
+                    IS_CE0_INVERTED     => '0',             -- std_ulogic
+                    IS_CE1_INVERTED     => '0',             -- std_ulogic
+                    IS_I0_INVERTED      => '0',             -- std_ulogic
+                    IS_I1_INVERTED      => '0',             -- std_ulogic
+                    IS_IGNORE0_INVERTED => '0',             -- std_ulogic
+                    IS_IGNORE1_INVERTED => '0',             -- std_ulogic
+                    IS_S0_INVERTED      => '0',             -- std_ulogic
+                    IS_S1_INVERTED      => '0',             -- std_ulogic
+                    PRESELECT_I0        => false,           -- boolean
+                    PRESELECT_I1        => false,           -- boolean
+                    SIM_DEVICE          => "ULTRASCALE",    -- string
+                    STARTUP_SYNC        => "FALSE"          -- string
+                )
+                port map (
+                    I0      => $3, -- in
+                    I1      => $4, -- in
+                    S0      => $5, -- in
+                    S1      => $6, -- in
+                    CE0     => $7, -- in
+                    CE1     => $8, -- in
+                    IGNORE0 => $9, -- in
+                    IGNORE1 => $10, -- in
+                    O       => $11 -- out
+                );
+        """
+
+    'BUFGP':
+        'prefix': 'BUFGP'
+        'body': """
+            ${1:FileName}_I_Bufgp_${2:0} : BUFGP port map (I => $3, O => $4);
+        """
+
+    'BUFH':
+        'prefix': 'BUFH'
+        'body': """
+            ${1:FileName}_I_Bufh_${2:0} : BUFH port map (I => $3, O => $4);
+        """
+
+    'BUFHCE':
+        'prefix': 'BUFHCE'
+        'body': """
+            ${1:FileName}_I_Bufhce_${2:0} : BUFHCE
+                generic map (CE_TYPE => "SYNC", INIT_OUT => 0)
+                port map (I => $3, CE => $4, O => $5);
+        """
+
+    'BUFIO':
+        'prefix': 'BUFIO'
+        'body': """
+            ${1:FileName}_I_Bufio_${2:0} : BUFIO port map (I => $3, O => $4);
+        """
+
+    'BUFMR':
+        'prefix': 'BUFMR'
+        'body': """
+            ${1:FileName}_I_Bufmr_${2:0} : BUFMR port map (I => $3, O => $4);
+        """
+
+    'BUFMRCE':
+        'prefix': 'BUFMRCE'
+        'body': """
+            ${1:FileName}_I_Bufmrce_${2:0} : ;BUFMRCE
+                generic map (
+                    CE_TYPE        => "SYNC", -- string
+                    INIT_OUT       => 0, -- integer
+                    IS_CE_INVERTED => '0' -- std_ulogic
+                )
+                port map (
+                    I  => $3, -- in
+                    CE => $4, -- in
+                    O  => $5 -- out
+                );
+        """
+
+    'BUFR':
+        'prefix': 'BUFR'
+        'body': """
+            ${1:FileName}_I_Bufr_${2:0} : BUFR
+                generic map (BUFR_DIVIDE => "BYPASS", SIM_DEVICE => "7SERIES")
+                port map (I => $3, CE => $4, CLR => $5, O => $6);
+        """
+
+    'CARRY4':
+        'prefix': 'CARRY4'
+        'body': """
+            ${1:FileName}_I_Carry4_${2:0} : CARRY4
+                port map (
+                    DI      => $3, -- in [3:0]
+                    S       => $4, -- in [3:0]
+                    CYINIT  => $5, -- in
+                    CI      => $6, -- in
+                    O       => $7, -- out [3:0]
+                    CO      => $8 -- out [3:0]
+                );
+        """
+
+    'CARRY8':
+        'prefix': 'CARRY8'
+        'body': """
+            ${1:FileName}_I_Carry8_${2:0} : CARRY8
+                generic map (CARRY_TYPE  => "SINGLE_CY8")
+                port map (
+                    CI      => $3, -- in
+                    CI_TOP  => $4, -- in
+                    DI      => $5, -- in [7:0]
+                    S       => $6, -- in [7:0]
+                    CO      => $7, -- out [7:0]
+                    O       => $8 -- out [7:0]
+                );
+        """
+
+    'CFGLUT5':
+        'prefix': 'CFGLUT5'
+        'body': """
+            ${1:FileName}_I_Cfglut5_${2:0} : CFGLUT5
+                generic map (INIT => X"00000000")
+                port map (
+                    CDI => $3, -- in
+                    I0  => $4, -- in
+                    I1  => $5, -- in
+                    I2  => $7, -- in
+                    I3  => $8, -- in
+                    I4  => $9, -- in
+                    CE  => $10, -- in
+                    CLK => $11, -- in
+                    O5  => $12, -- out
+                    O6  => $13, -- out
+                    CDO => $14 -- out
+                );
+        """
+
+
+    'DIFFINBUF':
+        'prefix': 'DIFFINBUF'
+        'body': """
+            ${1:FileName}_I_Diffinbuf_${2:0} : DIFFINBUF
+                generic map (
+                    DQS_BIAS        => "FALSE", -- string
+                    IBUF_LOW_PWR    => TRUE,    -- boolean
+                    ISTANDARD       => "UNUSED", -- string
+                    SIM_INPUT_BUFFER_OFFSET => 0 -- integer
+                )
+                port map (
+                    DIFF_IN_N   => $3, -- in
+                    DIFF_IN_P   => $4, -- in
+                    OSC         => $5, -- in [3:0]
+                    OSC_EN      => $6, -- in [1:0]
+                    VREF        => $7, -- in
+                    O           => $8, -- out
+                    O_B         => $9 -- out
+                );
+        """
+
+    'DNA_PORT':
+        'prefix': 'DNA_PORT'
+        'body': """
+            ${1:FileName}_I_Dna_Port_${2:0} : DNA_PORT
+                generic map (SIM_DNA_VALUE => X"000000000000000")
+                port map (
+                    DIN     => $3, -- in
+                    READ    => $4, -- in
+                    SHIFT   => $5, -- in
+                    CLK     => $6, -- in
+                    DOUT    => $7 -- out
+                );
+        """
+
+    'DPLL':
+        'prefix': 'DPLL'
+        'body': """
+            ${1:FileName}_I_Dpll_${2:0} : DPLL
+                generic map (
+                    CLKIN_PERIOD            => 0.000,   -- real
+                    REF_JITTER              => 0.010,   -- real
+                    DIVCLK_DIVIDE           => 1,       -- integer
+                    CLKFBOUT_MULT           => 42,      -- integer
+                    CLKFBOUT_FRACT          => 0,       -- integer
+                    CLKOUT0_DIVIDE          => 2,       -- integer
+                    CLKOUT0_PHASE           => 0.000,   -- real
+                    CLKOUT0_PHASE_CTRL      => "00",    -- std_logic_vector[1:0]
+                    CLKOUT1_DIVIDE          => 2,       -- integer
+                    CLKOUT1_PHASE           => 0.000,   -- real
+                    CLKOUT1_PHASE_CTRL      => "00",    -- std_logic_vector[1:0]
+                    CLKOUT2_DIVIDE          => 2,       -- integer
+                    CLKOUT2_PHASE           => 0.000,   -- real
+                    CLKOUT2_PHASE_CTRL      => "00",    -- std_logic_vector[1:0]
+                    CLKOUT3_DIVIDE          => 2,       -- integer
+                    CLKOUT3_PHASE           => 0.000,   -- real
+                    CLKOUT3_PHASE_CTRL      => "00",    -- std_logic_vector[1:0]
+                    COMPENSATION            => "AUTO",  -- string
+                    DESKEW_DELAY            => 0,       -- integer
+                    DESKEW_DELAY_EN         => "FALSE", -- string
+                    DESKEW_DELAY_PATH       => "FALSE", -- string
+                    IS_CLKIN_INVERTED       => '0',     -- bit
+                    IS_PSEN_INVERTED        => '0',     -- bit
+                    IS_PSINCDEC_INVERTED    => '0',     -- bit
+                    IS_PWRDWN_INVERTED      => '0',     -- bit
+                    IS_RST_INVERTED         => '0',     -- bit
+                    SEL_LOCKED_IN           => '1',     -- bit
+                    SEL_REG_DELAY           => "00",    -- std_logic_vector[1:0]
+                    USE_REG_VALID           => '1'      -- bit
+                )
+                port map (
+                    CLKFB_DESKEW    => $3, -- in
+                    CLKIN_DESKEW    => $4, -- in
+                    CLKIN           => $5, -- in
+                    PWRDWN          => $6, -- in
+                    RST             => $7, -- in
+                    CLKOUT0         => $8, -- out
+                    CLKOUT1         => $9, -- out
+                    CLKOUT2         => $10, -- out
+                    CLKOUT3         => $11, -- out
+                    PSCLK           => $12, -- in
+                    PSEN            => $13, -- in
+                    PSINCDEC        => $14, -- in
+                    PSDONE          => $15, -- out
+                    DCLK            => $16, -- in
+                    DEN             => $17, -- in
+                    DWE             => $18, -- in
+                    DADDR           => $19, -- in [6:0]
+                    DI              => $20, -- in [15:0]
+                    DO              => $21, -- out 15:0]
+                    DRDY            => $22, -- out
+                    LOCKED          => $23, -- out
+                    LOCKED_DESKEW   => $24, -- out
+                    LOCKED_FB       => $25 -- out
+                );
+        """
+
+    'DSP48E1':
+        'prefix': 'DSP48E1'
+        'body': """
+            ${1:FileName}_I_Dsp48e1_${2:0} : DSP48E1
+                generic map (
+                    B_INPUT             => "DIRECT",        -- string
+                    A_INPUT             => "DIRECT",        -- string
+                    AREG                => 1,               -- integer
+                    BREG                => 1,               -- integer
+                    CREG                => 1,               -- integer
+                    DREG                => 1,               -- integer
+                    ADREG               => 1,               -- integer
+                    MREG                => 1,               -- integer
+                    PREG                => 1,               -- integer
+                    BCASCREG            => 1,               -- integer
+                    ACASCREG            => 1,               -- integer
+                    INMODEREG           => 1,               -- integer
+                    ALUMODEREG          => 1,               -- integer
+                    CARRYINREG          => 1,               -- integer
+                    CARRYINSELREG       => 1,               -- integer
+                    OPMODEREG           => 1,               -- integer
+                    PATTERN             => X"000000000000", -- bit_vector
+                    MASK                => X"3FFFFFFFFFFF", -- bit_vector
+                    AUTORESET_PATDET    => "NO_RESET",      -- string
+                    SEL_MASK            => "MASK",          -- string
+                    SEL_PATTERN         => "PATTERN",       -- string
+                    USE_DPORT           => FALSE,           -- boolean
+                    USE_MULT            => "MULTIPLY",      -- string
+                    USE_PATTERN_DETECT  => "NO_PATDET",     -- string
+                    USE_SIMD            => "ONE48",         -- string
+                    IS_ALUMODE_INVERTED => "0000",          -- std_logic_vector[3:0]
+                    IS_CARRYIN_INVERTED => '0',             -- bit
+                    IS_CLK_INVERTED     => '0',             -- bit
+                    IS_INMODE_INVERTED  => "00000",         -- std_logic_vector[4:0]
+                    IS_OPMODE_INVERTED  => "0000000"        -- std_logic_vector[6:0]
+                )
+                port map (
+                    B               => $3, -- in [17:0]
+                    BCIN            => $4, -- in [17:0]
+                    CEB1            => $5, -- in
+                    CEB2            => $6, -- in
+                    RSTB            => $7, -- in
+                    BCOUT           => $8, -- out [17:0]
+                    A               => $9, -- in [29:0]
+                    ACIN            => $10, -- in [29:0]
+                    CEA1            => $11, -- in
+                    CEA2            => $12, -- in
+                    RSTA            => $13, -- in
+                    ACOUT           => $14, -- out [29:0]
+                    D               => $15, -- in [24:0]
+                    CED             => $16, -- in
+                    RSTD            => $17, -- in
+                    CEAD            => $18, -- in
+                    ALUMODE         => $19, -- in [3:0]
+                    CEALUMODE       => $20, -- in
+                    RSTALUMODE      => $21, -- in
+                    INMODE          => $22, -- in [4:0]
+                    CEINMODE        => $23, -- in
+                    RSTINMODE       => $24, -- in
+                    C               => $25, -- in [47:0]
+                    CEC             => $26, -- in
+                    RSTC            => $27, -- in
+                    CARRYIN         => $28, -- in
+                    CECARRYIN       => $29, -- in
+                    RSTALLCARRYIN   => $30, -- in
+                    CARRYCASCIN     => $31, -- in
+                    CARRYINSEL      => $32, -- in [2:0]
+                    CARRYCASCOUT    => $33, -- out
+                    CARRYOUT        => $34, -- out [3:0]
+                    PCIN            => $35, -- in [47:0]
+                    PCOUT           => $36, -- out [47:0]
+                    OPMODE          => $37, -- in [6:0]
+                    CECTRL          => $38, -- in
+                    RSTCTRL         => $39, -- in
+                    MULTSIGNIN      => $40, -- in
+                    CEM             => $41, -- in
+                    RSTM            => $42, -- in
+                    MULTSIGNOUT     => $43, -- out
+                    CLK             => $44, -- in
+                    P               => $45, -- out [47:0]
+                    CEP             => $46, -- in
+                    RSTP            => $47, -- in
+                    PATTERNBDETECT  => $48, -- out
+                    PATTERNDETECT   => $49, -- out
+                    OVERFLOW        => $50, -- out
+                    UNDERFLOW       => $51, -- out
+                );
+        """
+
+    'DSP48E2':
+        'prefix': 'DSP48E2'
+        'body': """
+            ${1:FileName}_I_Dsp48e2_${2:0} : DSP48E2
+                generic map (
+                    A_INPUT                 => "DIRECT",        -- string
+                    B_INPUT                 => "DIRECT",        -- string
+                    AREG                    => 1,               -- integer
+                    BREG                    => 1,               -- integer
+                    CREG                    => 1,               -- integer
+                    DREG                    => 1,               -- integer
+                    ADREG                   => 1,               -- integer
+                    ACASCREG                => 1,               -- integer
+                    BCASCREG                => 1,               -- integer
+                    MREG                    => 1,               -- integer
+                    PREG                    => 1,               -- integer
+                    INMODEREG               => 1,               -- integer
+                    CARRYINREG              => 1,               -- integer
+                    CARRYINSELREG           => 1,               -- integer
+                    ALUMODEREG              => 1,               -- integer
+                    OPMODEREG               => 1,               -- integer
+                    AMULTSEL                => "A",             -- string
+                    BMULTSEL                => "B",             -- string
+                    PREADDINSEL             => "A",             -- string
+                    SEL_MASK                => "MASK",          -- string
+                    SEL_PATTERN             => "PATTERN",       -- string
+                    AUTORESET_PATDET        => "NO_RESET",      -- string
+                    AUTORESET_PRIORITY      => "RESET",         -- string
+                    USE_MULT                => "MULTIPLY",      -- string
+                    USE_PATTERN_DETECT      => "NO_PATDET",     -- string
+                    USE_SIMD                => "ONE48",         -- string
+                    USE_WIDEXOR             => "FALSE",         -- string
+                    XORSIMD                 => "XOR24_48_96"    -- string
+                    MASK                    => X"3FFFFFFFFFFF", -- std_logic_vector[47:0]
+                    PATTERN                 => X"000000000000", -- std_logic_vector[47:0]
+                    RND                     => X"000000000000", -- std_logic_vector[47:0]
+                    IS_ALUMODE_INVERTED     => "0000",          -- std_logic_vector[3:0]
+                    IS_CARRYIN_INVERTED     => '0',             -- bit
+                    IS_CLK_INVERTED         => '0',             -- bit
+                    IS_INMODE_INVERTED      => "00000",         -- std_logic_vector[4:0]
+                    IS_OPMODE_INVERTED      => "000000000",     -- std_logic_vector[8:0]
+                    IS_RSTALLCARRYIN_INVERTED => '0',           -- bit
+                    IS_RSTALUMODE_INVERTED  => '0',             -- bit
+                    IS_RSTA_INVERTED        => '0',             -- bit
+                    IS_RSTB_INVERTED        => '0',             -- bit
+                    IS_RSTCTRL_INVERTED     => '0',             -- bit
+                    IS_RSTC_INVERTED        => '0',             -- bit
+                    IS_RSTD_INVERTED        => '0',             -- bit
+                    IS_RSTINMODE_INVERTED   => '0',             -- bit
+                    IS_RSTM_INVERTED        => '0',             -- bit
+                    IS_RSTP_INVERTED        => '0'              -- bit
+                )
+                port map (
+                    B               => $3, -- in [17:0]
+                    BCIN            => $4, -- in [17:0]
+                    CEB1            => $5, -- in
+                    CEB2            => $6, -- in
+                    RSTB            => $7, -- in
+                    BCOUT           => $8, -- out [17:0]
+                    A               => $9, -- in [29:0]
+                    ACIN            => $10, -- in [29:0]
+                    CEA1            => $11, -- in
+                    CEA2            => $12, -- in
+                    RSTA            => $13, -- in
+                    ACOUT           => $14, -- out [29:0]
+                    D               => $15, -- in [26:0]
+                    CED             => $16, -- in
+                    RSTD            => $17, -- in
+                    CEAD            => $18, -- in
+                    ALUMODE         => $19, -- in [3:0)
+                    CEALUMODE       => $20, -- in
+                    RSTALUMODE      => $21, -- in
+                    INMODE          => $22, -- in [4:0]
+                    CEINMODE        => $23, -- in
+                    RSTINMODE       => $24, -- in
+                    C               => $25, -- in [47:0)
+                    CEC             => $26, -- in
+                    RSTC            => $27, -- in
+                    CARRYIN         => $28, -- in
+                    CECARRYIN       => $29, -- in
+                    RSTALLCARRYIN   => $30, -- in
+                    CARRYCASCIN     => $31, -- in
+                    CARRYINSEL      => $32, -- in [2:0]
+                    CARRYCASCOUT    => $33, -- out
+                    CARRYOUT        => $34, -- out [3:0]
+                    PCIN            => $35, -- in [47:0]
+                    PCOUT           => $36, -- out [47:0]
+                    OPMODE          => $37, -- in (8:0]
+                    CECTRL          => $38, -- in
+                    RSTCTRL         => $39, -- in
+                    MULTSIGNIN      => $40, -- in
+                    CEM             => $41, -- in
+                    RSTM            => $42, -- in
+                    MULTSIGNOUT     => $43, -- out
+                    CLK             => $44, -- in
+                    P               => $45, -- out [47:0]
+                    CEP             => $46, -- in
+                    RSTP            => $47, -- in
+                    PATTERNBDETECT  => $48, -- out
+                    PATTERNDETECT   => $49, -- out
+                    OVERFLOW        => $50, -- out
+                    UNDERFLOW       => $51, -- out
+                    XOROUT          => $52 -- out [7:0]
+                );
+        """
+
+    'DSP48E5':
+        'prefix': 'DSP48E5'
+        'body': """
+            ${1:FileName}_I_Dsp48e5_${2:0} : DSP48E5
+                generic map (
+                    A_INPUT                 => "DIRECT",        -- string
+                    B_INPUT                 => "DIRECT",        -- string
+                    AREG                    => 1,               -- integer
+                    BREG                    => 1,               -- integer
+                    CREG                    => 1,               -- integer
+                    DREG                    => 1,               -- integer
+                    ADREG                   => 1,               -- integer
+                    ACASCREG                => 1,               -- integer
+                    BCASCREG                => 1,               -- integer
+                    MREG                    => 1,               -- integer
+                    PREG                    => 1,               -- integer
+                    INMODEREG               => 1,               -- integer
+                    CARRYINREG              => 1,               -- integer
+                    CARRYINSELREG           => 1,               -- integer
+                    ALUMODEREG              => 1,               -- integer
+                    OPMODEREG               => 1,               -- integer
+                    AMULTSEL                => "A",             -- string
+                    BMULTSEL                => "B",             -- string
+                    PREADDINSEL             => "A",             -- string
+                    SEL_MASK                => "MASK",          -- string
+                    SEL_PATTERN             => "PATTERN",       -- string
+                    AUTORESET_PATDET        => "NO_RESET",      -- string
+                    AUTORESET_PRIORITY      => "RESET",         -- string
+                    USE_MULT                => "MULTIPLY",      -- string
+                    USE_PATTERN_DETECT      => "NO_PATDET",     -- string
+                    USE_SIMD                => "ONE48",         -- string
+                    USE_WIDEXOR             => "FALSE",         -- string
+                    XORSIMD                 => "XOR24_48_96"    -- string
+                    MASK                    => X"3FFFFFFFFFFF", -- std_logic_vector[47:0]
+                    PATTERN                 => X"000000000000", -- std_logic_vector[47:0]
+                    RND                     => X"000000000000", -- std_logic_vector[47:0]
+                    IS_ALUMODE_INVERTED     => "0000",          -- std_logic_vector[3:0]
+                    IS_CARRYIN_INVERTED     => '0',             -- bit
+                    IS_CLK_INVERTED         => '0',             -- bit
+                    IS_INMODE_INVERTED      => "00000",         -- std_logic_vector[4:0]
+                    IS_OPMODE_INVERTED      => "000000000",     -- std_logic_vector[8:0]
+                    IS_RSTALLCARRYIN_INVERTED => '0',           -- bit
+                    IS_RSTALUMODE_INVERTED  => '0',             -- bit
+                    IS_RSTA_INVERTED        => '0',             -- bit
+                    IS_RSTB_INVERTED        => '0',             -- bit
+                    IS_RSTCTRL_INVERTED     => '0',             -- bit
+                    IS_RSTC_INVERTED        => '0',             -- bit
+                    IS_RSTD_INVERTED        => '0',             -- bit
+                    IS_RSTINMODE_INVERTED   => '0',             -- bit
+                    IS_RSTM_INVERTED        => '0',             -- bit
+                    IS_RSTP_INVERTED        => '0'              -- bit
+                )
+                port map (
+                    B               => $3, -- in [17:0]
+                    BCIN            => $4, -- in [17:0]
+                    CEB1            => $5, -- in
+                    CEB2            => $6, -- in
+                    RSTB            => $7, -- in
+                    BCOUT           => $8, -- out [17:0]
+                    A               => $9, -- in [29:0]
+                    ACIN            => $10, -- in [29:0]
+                    CEA1            => $11, -- in
+                    CEA2            => $12, -- in
+                    RSTA            => $13, -- in
+                    ACOUT           => $14, -- out [29:0]
+                    D               => $15, -- in [26:0]
+                    CED             => $16, -- in
+                    RSTD            => $17, -- in
+                    CEAD            => $18, -- in
+                    ALUMODE         => $19, -- in [3:0)
+                    CEALUMODE       => $20, -- in
+                    RSTALUMODE      => $21, -- in
+                    INMODE          => $22, -- in [4:0]
+                    CEINMODE        => $23, -- in
+                    RSTINMODE       => $24, -- in
+                    C               => $25, -- in [47:0)
+                    CEC             => $26, -- in
+                    RSTC            => $27, -- in
+                    CARRYIN         => $28, -- in
+                    CECARRYIN       => $29, -- in
+                    RSTALLCARRYIN   => $30, -- in
+                    CARRYCASCIN     => $31, -- in
+                    CARRYINSEL      => $32, -- in [2:0]
+                    CARRYCASCOUT    => $33, -- out
+                    CARRYOUT        => $34, -- out [3:0]
+                    PCIN            => $35, -- in [47:0]
+                    PCOUT           => $36, -- out [47:0]
+                    OPMODE          => $37, -- in (8:0]
+                    CECTRL          => $38, -- in
+                    RSTCTRL         => $39, -- in
+                    MULTSIGNIN      => $40, -- in
+                    CEM             => $41, -- in
+                    RSTM            => $42, -- in
+                    MULTSIGNOUT     => $43, -- out
+                    CLK             => $44, -- in
+                    P               => $45, -- out [47:0]
+                    CEP             => $46, -- in
+                    RSTP            => $47, -- in
+                    PATTERNBDETECT  => $48, -- out
+                    PATTERNDETECT   => $49, -- out
+                    OVERFLOW        => $50, -- out
+                    UNDERFLOW       => $51, -- out
+                    XOROUT          => $52 -- out [7:0]
+                );
+        """
+
+    'EFUSE_USR':
+        'prefix': 'EFUSE_USR'
+        'body': """2
+            ${1:FileName}_I_Efuse_Usr_${:0} : EFUSE_USR
+                generic map ("
+                    SIM_EFUSE_VALUE => X00000000" -- bit_vector
+                )
+                port map (t
+                    EFUSEUSR => $3 -- out [31:0]
+                );
+        """
+
+    'FADD':
+        'prefix': 'FADD'
+        'body': """
+            ${1:FileName}_I_Fadd_${2:0} : FADD
+                generic map (
+                    IS_I0_INVERTED  => '0', -- bit
+                    IS_I1_INVERTED  => '0' -- bit
+                )
+                port map (
+                    I0  => $3, -- in
+                    I1  => $4, -- in
+                    CI  => $5, -- in
+                    CO  => $6, -- out
+                    O   => $7 -- out
+                );
+        """
+
+    'FDCE':
+        'prefix': 'FDCE'
+        'body': """
+            ${1:FileName}_I_Fdce_${2:0} : FDCE
+                generic map (INIT => '0', IS_CLR_INVERTED => '0',
+                        IS_C_INVERTED => '0', IS_D_INVERTED => '0')
+                port map (D => $3, CE => $4, C => $5, CLR => $6, Q => $7);
+        """
+
+    'FDPE':
+        'prefix': 'FDPE'
+        'body': """
+            ${1:FileName}_I_Fdpe_${2:0} : FDPE
+                generic map (INIT => '0', IS_C_INVERTED => '0',
+                        IS_D_INVERTED => '0', IS_PRE_INVERTED => '0')
+                port map (D => $3, CE => $4, C => $5, PRE => $6, Q => $7);
+        """
+
+    'FDRE':
+        'prefix': 'FDRE'
+        'body': """
+            ${1:FileName}_I_Fdre_${2:0} : FDRE
+                generic map (INIT => '0', IS_C_INVERTED => '0',
+                        IS_D_INVERTED => '0', IS_R_INVERTED => '0')
+                port map (D => $3, CE => $3, C => $4, R => $5, Q => $6);
+        """
+
+    'FDSE':
+        'prefix': 'FDSE'
+        'body': """
+            ${1:FileName}_I_Fdse_${2:0} : FDSE
+                generic map (INIT => '0', IS_C_INVERTED => '0',
+                        IS_D_INVERTED => '0', IS_S_INVERTED => '0')
+                port map (D => $3, CE => $4, C => $5, S => $6, Q => $7);
+        """
+
+    'FIFO36E2':
+        'prefix': 'FIFO36E2'
+        'body': """
+            ${1:FileName}_I_Fifo36e2_${2:0} : FIFO36E2
+                generic map (
+                    INIT                    => X"000000000000000000", -- [71:0]
+                    SRVAL                   => X"000000000000000000", -- [71:0]
+                    CLOCK_DOMAINS           => "INDEPENDENT",
+                    READ_WIDTH              => 4,
+                    WRITE_WIDTH             => 4,
+                    REGISTER_MODE           => "UNREGISTERED",
+                    RDCOUNT_TYPE            => "RAW_PNTR",
+                    WRCOUNT_TYPE            => "RAW_PNTR",
+                    RSTREG_PRIORITY         => "RSTREG",
+                    SLEEP_ASYNC             => "FALSE",
+                    CASCADE_ORDER           => "NONE",
+                    PROG_EMPTY_THRESH       => 256,
+                    PROG_FULL_THRESH        => 256,
+                    EN_ECC_PIPE             => "FALSE",
+                    EN_ECC_READ             => "FALSE",
+                    EN_ECC_WRITE            => "FALSE",
+                    FIRST_WORD_FALL_THROUGH => "FALSE",
+                    IS_RDCLK_INVERTED       => '0',
+                    IS_RDEN_INVERTED        => '0',
+                    IS_RSTREG_INVERTED      => '0',
+                    IS_RST_INVERTED         => '0',
+                    IS_WRCLK_INVERTED       => '0',
+                    IS_WREN_INVERTED        => '0'
+                )
+                port map (
+                    DIN             => $3, -- in [63:0]
+                    DINP            => $4, -- in [7:0]
+                    CASDIN          => $5, -- in [63:0]
+                    CASDINP         => $6, -- in [7:0]
+                    WRCLK           => $7, -- in
+                    WREN            => $8, -- in
+                    WRCOUNT         => $9, -- out [13:0]
+                    WRERR           => $10, -- out
+                    WRRSTBUSY       => $11, -- out
+                    RDCLK           => $12, -- in
+                    RDEN            => $13, -- in
+                    RDCOUNT         => $14, -- out [13:0]
+                    RDERR           => $15, -- out
+                    RDRSTBUSY       => $16, -- out
+                    REGCE           => $17, -- in
+                    RST             => $18, -- in
+                    RSTREG          => $19, -- in
+                    SLEEP           => $20, -- in
+                    CASDOMUX        => $21, -- in
+                    CASDOMUXEN      => $22, -- in
+                    CASNXTRDEN      => $23, -- in
+                    CASOREGIMUX     => $24, -- in
+                    CASOREGIMUXEN   => $25, -- in
+                    CASPRVEMPTY     => $26, -- in
+                    INJECTDBITERR   => $27, -- in
+                    INJECTSBITERR   => $28, -- in
+                    CASNXTEMPTY     => $29, -- out
+                    CASPRVRDEN      => $30, -- out
+                    CASDOUT         => $31, -- out [63:0]
+                    CASDOUTP        => $32, -- out [7:0]
+                    DOUT            => $33, -- out [63:0]
+                    DOUTP           => $34, -- out [7:0]
+                    ECCPARITY       => $35, -- out [7:0]
+                    EMPTY           => $36, -- out
+                    FULL            => $37, -- out
+                    PROGEMPTY       => $38, -- out
+                    PROGFULL        => $39, -- out
+                    DBITERR         => $40, -- out
+                    SBITERR         => $41 -- out
+                );
+        """
+
+    'GLBL_VHD':
+        'prefix': 'GLBL_VHD'
+        'body': """
+            ${1:FileName}_I_Glbl_Vhd_${2:0} : GLBL_VHD
+                generic map (
+                    ROC_WIDTH   => 100000, -- integer
+                    TOC_WIDTH   => 0       -- integer
+                );
+        """
+
+    'HARD_SYNC':
+        'prefix': 'HARD_SYNC'
+        'body': """
+            ${1:FileName}_I_Hard_Sync_${2:0} : HARD_SYNC
+                generic map (
+                    INIT            => , -- '0'
+                    IS_CLK_INVERTED => , -- '0'
+                    LATENCY         =>  -- 2
+                )
+                port map (
+                    CLK     => $3, -- in
+                    DIN     => $4, -- in
+                    DOUT    => $5 -- out
+                );
+        """
+
+    'IBUF':
+        'prefix': 'IBUF'
+        'body': """
+            ${1:FileName}_I_Ibuf_${2:0} : IBUF
+                generic map (CAPACITANCE => "DONT_CARE",IBUF_DELAY_VALUE => "0",
+                            IFD_DELAY_VALUE => "AUTO", IBUF_LOW_PWR => TRUE,
+                            IOSTANDARD => "DEFAULT")
+                port map (I => $3, O => $4);
+        """
+
+    'IBUFCTRL':
+        'prefix': 'IBUFCTRL'
+        'body': """
+            ${1:FileName}_I_Ibufctrl_${2:0} : IBUFCTRL
+                generic map (
+                    ISTANDARD       => "UNUSED",    -- string
+                    USE_IBUFDISABLE => "FALSE"      -- string
+                )
+                port map (
+                    T               => $3, -- in
+                    I               => $4, -- in
+                    IBUFDISABLE     => $5, -- in
+                    INTERMDISABLE   => $6, -- in
+                    O               => $7 -- out
+                );
+        """
+
+    'IBUFDS':
+        'prefix': 'IBUFDS'
+        'body': """
+            ${1:FileName}_I_Ibufds_${2:0} : IBUFDS
+                generic map (DIFF_TERM => FALSE, IOSTANDARD => "DEFAULT", CAPACITANCE => "DONT_CARE",
+                            DQS_BIAS => "FALSE", IBUF_DELAY_VALUE => "0", IBUF_LOW_PWR => TRUE,
+                            IFD_DELAY_VALUE => "AUTO")
+                port map (I => $3, IB => $4, O => $5);
+        """
+
+    'IBUFDSE3':
+        'prefix': 'IBUFDSE3'
+        'body': """
+            ${1:FileName}_I_Ibufdse3_${2:0} : IBUFDSE3
+                generic (
+                    DIFF_TERM       => "FALSE",     -- string
+                    DQS_BIAS        => "FALSE",     -- string
+                    IBUF_LOW_PWR    => "TRUE",      -- string
+                    IOSTANDARD      => "DEFAULT",   -- string
+                    SIM_INPUT_BUFFER_OFFSET =: 0,   -- integer
+                    USE_IBUFDISABLE => "FALSE"      -- string
+                )
+                port map (
+                    I           => $3, -- in
+                    IB          => $4, -- in
+                    IBUFDISABLE => $5, -- in
+                    OSC         => $6, -- in [3:0]
+                    OSC_EN      => $7, -- in [1:0]
+                    O           => $8, -- out
+                );
+        """
+
+    'IBUFDS_DIFF_OUT':
+        'prefix': 'IBUFDS_DIFF_OUT'
+        'body': """
+            ${1:FileName}_I_Ibufds_Diff_Out_${2:0} : IBUFDS_DIFF_OUT
+                generic map (
+                    DIFF_TERM       => FALSE,   -- boolean
+                    IBUF_LOW_PWR    => TRUE,    -- boolean
+                    DQS_BIAS        => "FALSE", -- string
+                    IOSTANDARD      => "DEFAULT" -- string
+                )
+                port map (
+                    I   => $3, -- in
+                    IB  => $4, -- in
+                    O   => $5, -- out
+                    OB  => $6 -- out
+                );
+        """
+
+    'IBUFDS_DIFF_OUT_IBUFDISABLE':
+        'prefix': 'IBUFDS_DIFF_OUT_IBUFDISABLE'
+        'body': """
+            ${1:FileName}_I_Ibufds_Diff_Out_Dsble${2:0} : IBUFDS_DIFF_OUT_IBUFDISABLE
+            generic map (
+                DIFF_TERM       => "FALSE",     -- string
+                IBUF_LOW_PWR    => "TRUE",      -- string
+                IOSTANDARD      => "DEFAULT",   -- string
+                USE_IBUFDISABLE => "TRUE",      -- string
+                DQS_BIAS        => "FALSE",     -- string
+                SIM_DEVICE      => "7SERIES"    -- string
+            )
+            port map (
+                I           => $3, -- in
+                IB          => $4, -- in
+                IBUFDISABLE => $5, -- in
+                O           => $6, -- out
+                OB          => $7 -- out
+            );
+        """
+
+    'IBUFDS_DIFF_OUT_INTERMDISABLE':
+        'prefix': 'IBUFDS_DIFF_OUT_INTERMDISABLE'
+        'body': """
+            ${1:FileName}_I_Ibufds_Diff_Out_IntrmDsble_${2:0} : IBUFDS_DIFF_OUT_INTERMDISABLE
+                generic map (
+                    DIFF_TERM       => "FALSE",     -- string
+                    IBUF_LOW_PWR    => "TRUE",      -- string
+                    IOSTANDARD      => "DEFAULT",   -- string
+                    DQS_BIAS        => "FALSE",     -- string
+                    USE_IBUFDISABLE => "TRUE",      -- string
+                    SIM_DEVICE      => "7SERIES"    -- string
+                )
+                port map (
+                    I               => $3, -- in
+                    IB              => $4, -- in
+                    IBUFDISABLE     => $5, -- in
+                    INTERMDISABLE   => $6, -- in
+                    O               => $7, -- out
+                    OB              => $8 -- out
+                );
+        """
+
+    'IBUFDS_GTE3':
+        'prefix': 'IBUFDS_GTE3'
+        'body': """
+            ${1:FileName}_I_Ibufds_Gte3_${2:0} : IBUFDS_GTE3
+                generic map (
+                    REFCLK_EN_TX_PATH   => '0',  -- bit
+                    REFCLK_HROW_CK_SEL  => "00", -- [1:0]
+                    REFCLK_ICNTL_RX     => "00"  -- [1:0]
+                )
+                port map (
+                    I       => $3, -- in
+                    IB      => $4, -- in
+                    CEB     => $5, -- in
+                    O       => $6, -- out
+                    ODIV2   => $7 -- out
+                );
+        """
+
+    'IBUFDS_GTE4':
+        'prefix': 'IBUFDS_GTE4'
+        'body': """
+            ${1:FileName}_I_Ibufds_Gte4_${2:0} : IBUFDS_GTE4
+                generic map (
+                    REFCLK_EN_TX_PATH   => '0',  -- bit
+                    REFCLK_HROW_CK_SEL  => "00", -- [1:0]
+                    REFCLK_ICNTL_RX     => "00"  -- [1:0]
+                )
+                port map (
+                    I       => $3, -- in
+                    IB      => $4, -- in
+                    CEB     => $5, -- in
+                    O       => $6, -- out
+                    ODIV2   => $7 -- out
+                );
+        """
+
+    'IBUFDS_GTE5':
+        'prefix': 'IBUFDS_GTE5'
+        'body': """
+            ${1:FileName}_I_Ibufds_Gte5_${2:0} : IBUFDS_GTE5
+                generic map (
+                    REFCLK_CTL_DRV_SWING    => "000",   -- std_logic_vector[2:0]
+                    REFCLK_EN_DRV           => '0',     -- bit
+                    REFCLK_EN_TX_PATH       => '0',     -- bit
+                    REFCLK_HROW_CK_SEL      => 0,       -- integer
+                    REFCLK_ICNTL_RX         => 0        -- integer
+                )
+                port map (
+                    I       => $3, -- in
+                    IB      => $4, -- in
+                    CEB     => $5, -- in
+                    O       => $6, -- out
+                    ODIV2   => $7 -- out
+                );
+        """
+
+    'IBUFDS_IBUFDISABLE':
+        'prefix': 'IBUFDS_IBUFDISABLE'
+        'body': """
+            ${1:FileName}_I_Ibufds_dsble_${2:0} : IBUFDS_IBUFDISABLE
+                generic map (
+                    DIFF_TERM       => "FALSE",     -- string
+                    DQS_BIAS        => "FALSE",     -- string
+                    IBUF_LOW_PWR    => "TRUE",      -- string
+                    IOSTANDARD      => "DEFAULT",   -- string
+                    USE_IBUFDISABLE => "TRUE",      -- string
+                    SIM_DEVICE      => "7SERIES"    -- string
+                )
+                port map (
+                    I           => $3, -- in
+                    IB          => $4, -- in
+                    IBUFDISABLE => $5, -- in
+                    O           => $6 -- out
+                );
+        """
+
+    'IBUFDS_INTERMDISABLE':
+        'prefix': 'IBUFDS_INTERMDISABLE'
+        'body': """
+            ${1:FileName}_I_Ibufds_IntrmDsble_${2:0} : IBUFDS_INTERMDISABLE
+                generic map (
+                    DIFF_TERM       => "FALSE",     -- string
+                    DQS_BIAS        => "FALSE",     -- string
+                    IBUF_LOW_PWR    => "TRUE",      -- string
+                    IOSTANDARD      => "DEFAULT",   -- string
+                    USE_IBUFDISABLE => "TRUE",      -- string
+                    SIM_DEVICE      => "7SERIES"    -- string
+                )
+                port map (
+                    I               => $3, -- in
+                    IB              => $4, -- in
+                    IBUFDISABLE     => $5, -- in
+                    INTERMDISABLE   => $6, -- in
+                    O               => $7 -- out
+                );
+        """
+
+    'ICAPE2':
+        'prefix': 'ICAPE2'
+        'body': """
+            ${1:FileName}_I_Icape2_${2:0} : ICAPE2
+            generic map (
+                DEVICE_ID           => X"03651093", -- bit_vector
+                ICAP_WIDTH          => "X32",       -- string
+                SIM_CFG_FILE_NAME   => "NONE"       -- string
+            )
+            port map (
+                I       => $3, -- in [31:0]
+                RDWRB   => $4, -- in
+                CSIB    => $5, -- in
+                CLK     => $6, -- in
+                O       => $7 -- out [31:0]
+            );
+        """
+
+    'ICAPE3':
+        'prefix': 'ICAPE3'
+        'body': """
+            ${1:FileName}_I_Icape3_${2:0} : ICAPE3
+                generic map (
+                    DEVICE_ID           => X"03628093", -- bit_vector
+                    ICAP_AUTO_SWITCH    => "DISABLE",   -- string
+                    SIM_CFG_FILE_NAME   => "NONE"       -- string
+                )
+                port map (
+                    I       => $3, -- in [31:0]
+                    CLK     => $4, -- in
+                    CSIB    => $5, -- in
+                    RDWRB   => $6, -- in
+                    PRDONE  => $7, -- out
+                    PRERROR => $8, -- out
+                    AVAIL   => $9, -- out
+                    O       => $10 -- out [31:0]
+                );
+        """
+
+    'IDDR':
+        'prefix': 'IDDR'
+        'body': """
+            ${1:FileName}_I_Iddr_${2:0} : IDDR
+            generic map (
+                DDR_CLK_EDGE    => "OPPOSITE_EDGE", -- string
+                INIT_Q1         => '0',             -- bit
+                INIT_Q2         => '0',             -- bit
+                SRTYPE          => "SYNC",          -- string
+                IS_C_INVERTED   => '0',             -- std_ulogic
+                IS_D_INVERTED   => '0'              -- std_ulogic
+            )
+            port map (
+                D   => $3, -- in
+                CE  => $4, -- in
+                C   => $5, -- in
+                S   => $6, -- in
+                R   => $7, -- in
+                Q1  => $8, -- out
+                Q2  => $9 -- out
+            );
+        """
+
+    'IDDR_2CLK':
+        'prefix': 'IDDR_2CLK'
+        'body': """
+            ${1:FileName}_I_Iddr_2clk_${2:0} : IDDR_2CLK
+                generic map (
+                    DDR_CLK_EDGE    => "OPPOSITE_EDGE", -- string
+                    INIT_Q1         => '0',             -- bit
+                    INIT_Q2         => '0',             -- bit
+                    SRTYPE          => "SYNC"           -- string
+                    IS_CB_INVERTED  => '0',             -- std_ulogic
+                    IS_C_INVERTED   => '0',             -- std_ulogic
+                    IS_D_INVERTED   => '0'              -- std_ulogic
+                )
+                port map (
+                    D   => $3, -- in
+                    CE  => $4, -- in
+                    C   => $5, -- in
+                    CB  => $6, -- in
+                    S   => $7, -- in
+                    R   => $8, -- in
+                    Q1  => $9, -- out
+                    Q2  => $10 -- out
+                );
+        """
+
+    'IDDRE1':
+        'prefix': 'IDDRE1'
+        'body': """
+            ${1:FileName}_I_Iddre1_${2:0} : IDDRE1
+                generic map (
+                    DDR_CLK_EDGE    => "OPPOSITE_EDGE", -- string
+                    IS_CB_INVERTED  => '0'  -- bit
+                    IS_C_INVERTED   => '0'  -- bit
+                )
+                port map (
+                    D   => $3, -- in
+                    C   => $4, -- in
+                    CB  => $5, -- in
+                    R   => $6, -- in
+                    Q1  => $7, -- out
+                    Q2  => $8 -- out
+                );
+        """
+
+    'IDELAYCTRL':
+        'prefix': 'IDELAYCTRL'
+        'body': """
+            ${1:FileName}_I_Idlyctrl_${2:0} : IDELAYCTRL
+                generic map (SIM_DEVICE => "7SERIES")
+                port map(RDY => $3, REFCLK => $3, RST => $4);
+        """
+
+    'IDELAYE2':
+        'prefix': 'IDELAYE2'
+        'body': """
+            ${1:FileName}_I_Idlye2_${2:0} : IDELAYE2
+                generic map (
+                    SIGNAL_PATTERN         => "DATA",      -- string
+                    REFCLK_FREQUENCY       => 200.0,       -- real
+                    HIGH_PERFORMANCE_MODE  => "FALSE",     -- string
+                    DELAY_SRC              => "IDATAIN",   -- string
+                    CINVCTRL_SEL           => "FALSE",     -- string
+                    IDELAY_TYPE            => "FIXED",     -- string
+                    IDELAY_VALUE           => 0,           -- integer
+                    PIPE_SEL               => "FALSE",     -- string
+                    IS_C_INVERTED          => '0',         -- bit
+                    IS_DATAIN_INVERTED     => '0',         -- bit
+                    IS_IDATAIN_INVERTED    => '0'          -- bit
+                )
+                port map (
+                    DATAIN          => $3, -- in
+                    IDATAIN         => $4, -- in
+                    CE              => $5, -- in
+                    INC             => $6, -- in
+                    C               => $7, -- in
+                    CINVCTRL        => $8, -- in
+                    LD              => $9, -- in
+                    LDPIPEEN        => $10, -- in
+                    REGRST          => $11, -- in
+                    CNTVALUEIN      => $12, -- in [4:0]
+                    CNTVALUEOUT     => $13, -- out [4:0]
+                    DATAOUT         => $14 -- out
+                );
+        """
+
+    'IDELAYE2_FINEDELAY':
+        'prefix': 'IDELAYE2_FINEDELAY'
+        'body': """
+            ${1:FileName}_I_Idlye2_fndly_${2:0} : IDELAYE2_FINEDELAY
+                generic map (
+                    SIGNAL_PATTERN          => "DATA",      -- string
+                    REFCLK_FREQUENCY        => 200.0,       -- real
+                    HIGH_PERFORMANCE_MODE   => "FALSE",     -- string
+                    DELAY_SRC               => "IDATAIN",   -- string
+                    CINVCTRL_SEL            => "FALSE",     -- string
+                    FINEDELAY               => "BYPASS",    -- string
+                    IDELAY_TYPE             => "FIXED",     -- string
+                    IDELAY_VALUE            => 0,           -- integer
+                    DELAY_SRC               => "IDATAIN",   -- string
+                    IS_C_INVERTED           => '0',         -- bit
+                    IS_DATAIN_INVERTED      => '0',         -- bit
+                    IS_IDATAIN_INVERTED     => '0',         -- bit
+                    PIPE_SEL                => "FALSE"      -- string
+                )
+                port map (
+                    DATAIN      => $3, -- in
+                    IDATAIN     => $4, -- in
+                    IFDLY       => $5, -- in [2:0]
+                    CE          => $6, -- in
+                    INC         => $7, -- in
+                    C           => $8, -- in
+                    CINVCTRL    => $9, -- in
+                    LD          => $10, -- in
+                    LDPIPEEN    => $11, -- in
+                    REGRST      => $12, -- in
+                    CNTVALUEIN  => $13, -- in [4:0]
+                    CNTVALUEOUT => $14, -- out [4:0]
+                    DATAOUT     => $15 -- out
+                );
+        """
+
+    'IDELAYE3':
+        'prefix': 'IDELAYE3'
+        'body': """
+            ${1:FileName}_I_Idlye3_${2:0} : IDELAYE3
+                generic map (
+                    CASCADE             => "NONE",          -- string
+                    DELAY_FORMAT        => "TIME",          -- string
+                    DELAY_SRC           => "IDATAIN",       -- string
+                    DELAY_TYPE          => "FIXED",         -- string
+                    DELAY_VALUE         => 0,               -- integer
+                    LOOPBACK            => "FALSE",         -- string
+                    IS_CLK_INVERTED     => '0',             -- std_ulogic
+                    IS_RST_INVERTED     => '0',             -- std_ulogic
+                    REFCLK_FREQUENCY    => 300.0,           -- real
+                    UPDATE_MODE         => "ASYNC",         -- string
+                    SIM_DEVICE          => "ULTRASCALE",    -- string
+                    SIM_VERSION         => 2.0              -- real
+                )
+                port map (
+                    IDATAIN        => $3, -- in
+                    DATAIN         => $4, -- in
+                    CASC_IN        => $5, -- in
+                    CASC_RETURN    => $6, -- in
+                    CLK            => $7, -- in
+                    CE             => $8, -- in
+                    RST            => $9, -- in
+                    INC            => $10, -- in
+                    LOAD           => $11, -- in
+                    EN_VTC         => $12, -- in
+                    CNTVALUEIN     => $13, -- in [8:0]
+                    CNTVALUEOUT    => $14, -- out [8:0]
+                    CASC_OUT       => $15, -- out
+                    DATAOUT        => $16 -- out
+                );
+        """
+
+    'IDELAYE5':
+        'prefix': 'IDELAYE5'
+        'body': """
+            ${1:FileName}_I_Idlye5_${2:0} : IDELAYE5
+                generic map (
+                    CASCADE         => "FALSE", -- string
+                    IS_CLK_INVERTED => '0',     -- bit
+                    IS_RST_INVERTED => '0'      -- bit
+                )
+                port map (
+                    IDATAIN     => $3, -- in
+                    CLK         => $4, -- in
+                    CE          => $5, -- in
+                    RST         => $6, -- in
+                    INC         => $7, -- in
+                    LOAD        => $8, -- in
+                    CASC_RETURN => $9, -- in
+                    CNTVALUEIN  => $10, -- in [4:0]
+                    CNTVALUEOUT => $11, -- out [4:0]
+                    CASC_OUT    => $12, -- out
+                    DATAOUT     => $13 -- out
+                );
+        """
+
+    'INBUF':
+        'prefix': 'INBUF'
+        'body': """
+            ${1:FileName}_I_Inbuf_${2:0} : INBUF
+                generic map (
+                    IBUF_LOW_PWR    => "TRUE",      -- string
+                    ISTANDARD       => "UNUSED",    -- string
+                    SIM_INPUT_BUFFER_OFFSET => 0    -- integer
+                )
+                port map (
+                    PAD     => $3, -- in
+                    VREF    => $4, -- in
+                    OSC     => $5, -- in [3:0]
+                    OSC_EN  => $6, -- in
+                    O       => $7 -- out
+                );
+        """
+
+    'IN_FIFO':
+        'prefix': 'IN_FIFO'
+        'body': """
+            ${1:FileName}_I_In_Fifo_${2:0} : IN_FIFO
+                generic map (
+                    SYNCHRONOUS_MODE    => "FALSE",             -- string
+                    ARRAY_MODE          => "ARRAY_MODE_4_X_8",  -- string
+                    ALMOST_EMPTY_VALUE  => 1,                   -- integer
+                    ALMOST_FULL_VALUE   => 1                    -- integer
+                )
+                port map (
+                    D0          => $3, -- in [3:0]
+                    D1          => $4, -- in [3:0]
+                    D2          => $5, -- in [3:0]
+                    D3          => $6, -- in [3:0]
+                    D4          => $7, -- in [3:0]
+                    D5          => $8, -- in [7:0]
+                    D6          => $9, -- in [7:0]
+                    D7          => $10, -- in [3:0]
+                    D8          => $11, -- in [3:0]
+                    D9          => $12, -- in [3:0]
+                    WRCLK       => $13, -- in
+                    WREN        => $14, -- in
+                    RESET       => $15, -- in
+                    RDCLK       => $16, -- in
+                    RDEN        => $17, -- in
+                    Q0          => $18, -- out [7:0]
+                    Q1          => $19, -- out [7:0]
+                    Q2          => $20, -- out [7:0]
+                    Q3          => $21, -- out [7:0]
+                    Q4          => $22, -- out [7:0]
+                    Q5          => $23, -- out [7:0]
+                    Q6          => $24, -- out [7:0]
+                    Q7          => $25, -- out [7:0]
+                    Q8          => $26, -- out [7:0]
+                    Q9          => $27, -- out [7:0]
+                    ALMOSTEMPTY => $28, -- out
+                    ALMOSTFULL  => $29, -- out
+                    EMPTY       => $20, -- out
+                    FULl        => $21 -- out
+                );
+        """
+
+    'IOBUF':
+        'prefix': 'IOBUF'
+        'body': """
+            ${1:FileName}_I_Iobuf_${2:0} : IOBUF
+                generic map (DRIVE => 12, IBUF_LOW_PWR => TRUE, IOSTANDARD => "DEFAULT", SLEW => "SLOW")
+                port map (I => $3, T => $4, O => $5, IO => $6);
+        """
+
+    'IOBUFDS':
+        'prefix': 'IOBUFDS'
+        'body': """
+            ${1:FileName}_I_Iobufds_${2:0} : IOBUFDS
+                generic map (
+                    DIFF_TERM   => FALSE,       -- Boolean
+                    DQS_BIAS    => "FALSE",     -- string
+                    IBUF_LOW_PWR => TRUE,       -- boolean
+                    SLEW        => "SLOW",      -- string
+                    IOSTANDARD  => "DEFAULT"    -- string
+                )
+                port map (
+                    I   => $3, -- in
+                    T   => $4, -- in
+                    O   => $5, -- out
+                    IO  => $6, -- inout
+                    IOB => $7, -- inout
+                );
+        """
+
+    'IOBUFDSE3':
+        'prefix': 'IOBUFDSE3'
+        'body': """
+            ${1:FileName}_I_iobufdse3_${2:0} : IOBUFDSE3
+                generic map (
+                    DIFF_TERM       => "FALSE",     -- string
+                    DQS_BIAS        => "FALSE",     -- string
+                    IBUF_LOW_PWR    => "TRUE",      -- string
+                    IOSTANDARD      => "DEFAULT",   -- string
+                    SIM_INPUT_BUFFER_OFFSET => 0,   -- integer
+                    USE_IBUFDISABLE => "FALSE"      -- string
+                )
+                port map (
+                    IO          => $3, -- inout
+                    IOB         => $4, -- inout
+                    I           => $5, -- in
+                    T           => $6, -- in
+                    O           => $7, -- out
+                    OSC         => $8, -- in [3:0]
+                    OSC_EN      => $9, -- in [1:0]
+                    IBUFDISABLE => $10, -- in
+                    DCITERMDISABLE => $11 -- in
+                );
+        """
+
+    'IOBUFDS_DIFF_OUT':
+        'prefix': 'IOBUFDS_DIFF_OUT'
+        'body': """
+            ${1:FileName}_I_Iobufds_Diff_Out_${2:0} : IOBUFDS_DIFF_OUT
+                generic map (
+                    DIFF_TERM       => FALSE,   -- boolean
+                    DQS_BIAS        => "FALSE", -- string
+                    IBUF_LOW_PWR    => TRUE,    -- boolean
+                    IOSTANDARD      => "DEFAULT"    -- stting
+                )
+                port map (
+                    I   => $3, -- in
+                    TM  => $4, -- in
+                    TS  => $5, -- in
+                    O   => $6, -- out
+                    OB  => $7, -- out
+                    IO  => $8, -- inout
+                    IOB => $9 -- inout
+                );
+        """
+
+    'IOBUFDS_DIFF_OUT_INTERMDISABLE':
+        'prefix': 'IOBUFDS_DIFF_OUT_INTERMDISABLE'
+        'body': """
+            ${1:FileName}_I_Iobufds_Diff_Out_Intrmdsble_${2:0} : IOBUFDS_DIFF_OUT_INTERMDISABLE
+            generic map (
+                DIFF_TERM       => "FALSE",     -- string
+                DQS_BIAS        => "FALSE",     -- string
+                IBUF_LOW_PWR    => "TRUE",      -- string
+                IOSTANDARD      => "DEFAULT",   -- string
+                SIM_DEVICE      => "7SERIES",   -- string
+                USE_IBUFDISABLE => "TRUE"       -- string
+            )
+            port map (
+                IO      => $3, -- inout
+                IOB     => $4, -- inout
+                I       => $5, -- in
+                TM      => $6, -- in
+                TS      => $7, -- in
+                O       => $8, -- out
+                OB      => $9, -- out
+                IBUFDISABLE     => $10, -- in
+                INTERMDISABLE   => $11 -- in
+            );
+        """
+
+    'IOBUFDS_INTERMDISABLE':
+        'prefix': 'IOBUFDS_INTERMDISABLE'
+        'body': """
+            ${1:FileName}_I_Iobufds_intrmdsble_${2:0} : IOBUFDS_INTERMDISABLE
+                generic map (
+                    DIFF_TERM       => "FALSE",     -- string
+                    DQS_BIAS        => "FALSE",     -- string
+                    IBUF_LOW_PWR    => "TRUE",      -- string
+                    IOSTANDARD      => "DEFAULT",   -- string
+                    SIM_DEVICE      => "7SERIES",   -- string
+                    SLEW            => "SLOW",      -- string
+                    USE_IBUFDISABLE => "TRUE"       -- string
+                )
+                port map (
+                    IO  => $3, -- inout
+                    IOB => $4, -- inout
+                    I   => $5, -- in
+                    T   => $6, -- in
+                    O   => $7, -- out
+                    IBUFDISABLE     => $8, -- in
+                    INTERMDISABLE   => $9 -- in
+                );
+        """
+
+    'IOBUFE3':
+        'prefix': 'IOBUFE3'
+        'body': """
+            ${1:FileName}_I_Iobufe3_${2:0} : IOBUFE3
+                generic map (
+                    DRIVE           => 12,          -- integer
+                    IBUF_LOW_PWR    => "TRUE",      -- string
+                    IOSTANDARD      => "DEFAULT",   -- string
+                    SIM_INPUT_BUFFER_OFFSET => 0,   -- integer
+                    USE_IBUFDISABLE => "FALSE"      -- string
+                )
+                port map (
+                    IO      => $3, -- inout
+                    I       => $4, -- in
+                    T       => $5, -- in
+                    O       => $6, -- out
+                    OSC     => $7, -- in [3:0]
+                    OSC_EN  => $8, -- in
+                    VREF    => $9, -- in
+                    DCITERMDISABLE  => $10, -- in
+                    IBUFDISABLE     => $11 -- in
+                );
+        """
+
+    'ISERDES':
+        'prefix': 'ISERDES'
+        'body': """
+            ${1:FileName}_I_Isrds_${2:0} : ISERDES
+                generic map (
+                    BITSLIP_ENABLE  => false,       -- boolean
+                    DATA_RATE       => "DDR",       -- string
+                    DATA_WIDTH      => 4,           -- integer
+                    INIT_Q1         => '0',         -- bit
+                    INIT_Q2         => '0',         -- bit
+                    INIT_Q3         => '0',         -- bit
+                    INIT_Q4         => '0',         -- bit
+                    INTERFACE_TYPE  => "MEMORY",    -- string
+                    IOBDELAY        => "NONE",      -- string
+                    IOBDELAY_TYPE   => "DEFAULT",   -- string
+                    IOBDELAY_VALUE  => 0,           -- integer
+                    NUM_CE          => 2,           -- integer
+                    SERDES_MODE     => "MASTER",    -- string
+                    SRVAL_Q1        => '0',         -- bit
+                    SRVAL_Q2        => '0',         -- bit
+                    SRVAL_Q3        => '0',         -- bit
+                    SRVAL_Q4        => '0'          -- bit
+                )
+                port map (
+                    D       => $3, -- in
+                    CE1     => $4, -- in
+                    CE2     => $5, -- in
+                    SR      => $6, -- in
+                    REV     => $7, -- in
+                    DLYCE   => $8, -- in
+                    DLYINC  => $9, -- in
+                    DLYRST  => $10, -- in
+                    BITSLIP => $11, -- in
+                    O       => $12, -- out
+                    Q1      => $13, -- out
+                    Q2      => $14, -- out
+                    Q3      => $15, -- out
+                    Q4      => $16, -- out
+                    Q5      => $17, -- out
+                    Q6      => $18, -- out
+                    CLK     => $19, -- in
+                    CLKDIV  => $20, -- in
+                    OCLK    => $21, -- in
+                    SHIFTIN1    => $22, -- in
+                    SHIFTIN2    => $23, -- in
+                    SHIFTOUT1   => $24, -- out
+                    SHIFTOUT2   => $25, -- out
+                );
+        """
+
+    'ISERDESE2':
+        'prefix': 'ISERDESE2'
+        'body': """
+            ${1:FileName}_I_Isrdse2_${2:0} : ISERDESE2
+                generic map (
+                    SERDES_MODE         => "MASTER",    -- string
+                    INTERFACE_TYPE      => "MEMORY",    -- string
+                    IOBDELAY            => "NONE",      -- string
+                    DATA_RATE           => "DDR",       -- string
+                    DATA_WIDTH          => 4,           -- integer
+                    DYN_CLKDIV_INV_EN   => "FALSE",     -- string
+                    DYN_CLK_INV_EN      => "FALSE",     -- string
+                    NUM_CE              => 2,           -- integer
+                    OFB_USED            => "FALSE",     -- string
+                    INIT_Q1             => '0',         -- bit;
+                    INIT_Q2             => '0',         -- bit;
+                    INIT_Q3             => '0',         -- bit;
+                    INIT_Q4             => '0',         -- bit;
+                    SRVAL_Q1            => '0',         -- bit;
+                    SRVAL_Q2            => '0',         -- bit;
+                    SRVAL_Q3            => '0',         -- bit;
+                    SRVAL_Q4            => '0',         -- bit
+                    IS_CLKB_INVERTED    => '0',         -- bit
+                    IS_CLKDIVP_INVERTED => '0',         -- bit
+                    IS_CLKDIV_INVERTED  => '0',         -- bit
+                    IS_CLK_INVERTED     => '0',         -- bit
+                    IS_D_INVERTED       => '0',         -- bit
+                    IS_OCLKB_INVERTED   => '0',         -- bit
+                    IS_OCLK_INVERTED    => '0'          -- bit
+                )
+                port map (
+                    D                   => $3, -- in
+                    DDLY                => $4, -- in
+                    OFB                 => $5, -- in
+                    BITSLIP             => $6, -- in
+                    CE1                 => $7, -- in
+                    CE2                 => $8, -- in
+                    RST                 => $9, -- in
+                    CLK                 => $10, -- in
+                    CLKB                => $11, -- in
+                    CLKDIV              => $12, -- in
+                    CLKDIVP             => $13, -- in
+                    OCLK                => $14, -- in
+                    OCLKB               => $15, -- in
+                    DYNCLKDIVSEL        => $16, -- in
+                    DYNCLKSEL           => $17, -- in
+                    SHIFTOUT1           => $18, -- out
+                    SHIFTOUT2           => $19, -- out
+                    O                   => $20, -- out
+                    Q1                  => $21, -- out
+                    Q2                  => $22, -- out
+                    Q3                  => $23, -- out
+                    Q4                  => $24, -- out
+                    Q5                  => $25, -- out
+                    Q6                  => $26, -- out
+                    Q7                  => $27, -- out
+                    Q8                  => $28, -- out
+                    SHIFTIN1            => $29, -- in
+                    SHIFTIN2            => $30 -- in
+                );
+        """
+
+    'ISERDESE3':
+        'prefix': 'ISERDESE3'
+        'body': """
+            ${1:FileName}_I_Isrdse3_${2:0} : ISERDESE3
+                generic map (
+                    DATA_WIDTH          => 8,               -- integer
+                    DDR_CLK_EDGE        => "OPPOSITE_EDGE", -- string
+                    FIFO_ENABLE         => "FALSE",         -- string
+                    FIFO_SYNC_MODE      => "FALSE",         -- string
+                    IDDR_MODE           => "FALSE",         -- string
+                    IS_CLK_B_INVERTED   => '0',             -- std_ulogic
+                    IS_CLK_INVERTED     => '0',             -- std_ulogic
+                    IS_RST_INVERTED     => '0',             -- std_ulogic
+                    SIM_DEVICE          => "ULTRASCALE",    -- string
+                    SIM_VERSIOM         => 2.0              -- real
+                )
+                port map (
+                    D               => $3, -- in
+                    CLK             => $4, -- in
+                    CLKDIV          => $5, -- in
+                    CLK_B           => $6, -- in
+                    RST             => $7, -- in
+                    FIFO_RD_CLK     => $8, -- in
+                    FIFO_RD_EN      => $9, -- in
+                    INTERNAL_DIVCLK => $10, -- out
+                    FIFO_EMPTY      => $11, -- out
+                    Q               => $12 -- out[7:0]
+                );
+        """
+
+    'LUT5':
+        'prefix': 'LUT5'
+        'body': """
+            ${1:FileName}_I_Lut5_${2:0} : LUT5
+                generic map (
+                    INIT => X"00000000"
+                )
+                port map (
+                    I0  => $3, -- in
+                    I1  => $4, -- in
+                    I2  => $5, -- in
+                    I3  => $6, -- in
+                    I4  => $7, -- in
+                    O   => $8 -- out
+                );
+        """
+
+    'LUT6_2':
+        'prefix': 'LUT6_2'
+        'body': """
+            ${1:FileName}_I_Lut6_2_${2:0} : LUT6_2
+                generic map (
+                    INIT => X"0000000000000000"  -- bit_vector
+                )
+                port map (
+                    I0 => $3, -- in
+                    I1 => $4, -- in
+                    I2 => $5, -- in
+                    I3 => $6, -- in
+                    I4 => $7, -- in
+                    I5 => $8, -- in
+                    O5 => $9, -- out
+                    O6 => $10 -- out
+                );
+        """
+
+    'MASTER_JTAG':
+        'prefix': 'MASTER_JTAG'
+        'body': """
+            ${1:FileName}_I_Mstr_Jtag_${2:0} : MASTER_JTAG
+                port map (
+                    TDO => $3, -- out
+                    TCK => $4, -- in
+                    TDI => $5, -- in
+                    TMS => $6 -- in
+                );
+        """
+
+    'MMCME2_ADV':
+        'prefix': 'MMCME2_ADV'
+        'body': """
+            ${1:FileName}_I_Mmcme2_Adv_${2:0} : MMCME2_ADV
+                    generic map (
+                        BANDWIDTH               => "OPTIMIZED",  -- string
+                        CLKIN1_PERIOD           => 0.000,        -- real
+                        CLKIN2_PERIOD           => 0.000,        -- real
+                        REF_JITTER1             => 0.0,          -- real
+                        REF_JITTER2             => 0.0,          -- real
+                        COMPENSATION            => "ZHOLD",      -- string
+                        DIVCLK_DIVIDE           => 1,            -- integer
+                        CLKFBOUT_MULT_F         => 5.000,        -- real
+                        CLKFBOUT_PHASE          => 0.000,        - real
+                        CLKFBOUT_USE_FINE_PS    => FALSE,        -- boolean
+                        CLKOUT0_DIVIDE_F        => 1.000,        -- real
+                        CLKOUT0_DUTY_CYCLE      => 0.500,        -- real
+                        CLKOUT0_PHASE           => 0.000,        -- real
+                        CLKOUT0_USE_FINE_PS     => FALSE,        -- boolean
+                        CLKOUT1_DIVIDE          => 1,            -- integer
+                        CLKOUT1_DUTY_CYCLE      => 0.500,        -- real
+                        CLKOUT1_PHASE           => 0.000,        -- real
+                        CLKOUT1_USE_FINE_PS     => FALSE,        -- boolean
+                        CLKOUT2_DIVIDE          => 1,            -- integer
+                        CLKOUT2_DUTY_CYCLE      => 0.500,        -- real
+                        CLKOUT2_PHASE           => 0.000,        -- real
+                        CLKOUT2_USE_FINE_PS     => FALSE,        -- boolean
+                        CLKOUT3_DIVIDE          => 1,            -- integer
+                        CLKOUT3_DUTY_CYCLE      => 0.500,        -- real
+                        CLKOUT3_PHASE           => 0.000,        -- real
+                        CLKOUT3_USE_FINE_PS     => FALSE,        -- boolean
+                        CLKOUT4_CASCADE         => FALSE,        -- boolean
+                        CLKOUT4_DIVIDE          => 1,            -- integer
+                        CLKOUT4_DUTY_CYCLE      => 0.500,        -- real
+                        CLKOUT4_PHASE           => 0.000,        -- real
+                        CLKOUT4_USE_FINE_PS     => FALSE,        -- boolean
+                        CLKOUT5_DIVIDE          => 1,            -- integer
+                        CLKOUT5_DUTY_CYCLE      => 0.500,        -- real
+                        CLKOUT5_PHASE           => 0.000,        -- real
+                        CLKOUT5_USE_FINE_PS     => FALSE,        -- boolean
+                        CLKOUT6_DIVIDE          => 1,            -- integer
+                        CLKOUT6_DUTY_CYCLE      => 0.500,        -- real
+                        CLKOUT6_PHASE           => 0.000,        -- real
+                        CLKOUT6_USE_FINE_PS     => FALSE,        -- boolean
+                        SS_EN                   => "FALSE",      -- string
+                        SS_MODE                 => "CENTER_HIGH",-- string
+                        SS_MOD_PERIOD           => 10000,        -- integer
+                        STARTUP_WAIT            => FALSE         -- boolean
+                    )
+                    port map (
+                        CLKIN1          => $3, -- in
+                        CLKIN2          => $4, -- in
+                        CLKINSEL        => $5, -- in
+                        CLKFBIN         => $6, -- in
+                        CLKFBOUT        => $7, -- out
+                        CLKFBOUTB       => $8, -- out
+                        CLKFBSTOPPED    => $9, -- out
+                        CLKINSTOPPED    => $10, -- out
+                        RST             => $11, -- in
+                        PWRDWN          => $12, -- in
+                        LOCKED          => $13, -- out
+                        CLKOUT0         => $14, -- out
+                        CLKOUT0B        => $15, -- out
+                        CLKOUT1         => $16, -- out
+                        CLKOUT1B        => $17, -- out
+                        CLKOUT2         => $18, -- out
+                        CLKOUT2B        => $19, -- out
+                        CLKOUT3         => $20, -- out
+                        CLKOUT3B        => $21, -- out
+                        CLKOUT4         => $22, -- out
+                        CLKOUT5         => $23, -- out
+                        CLKOUT6         => $24, -- out
+                        DI              => $25, -- in [15:0]
+                        DADDR           => $26, -- in [6:0]
+                        DEN             => $27, -- in
+                        DWE             => $28, -- in
+                        DCLK            => $29, -- in
+                        DO              => $30, -- out [15:0]
+                        DRDY            => $31, -- out
+                        PSCLK           => $32, -- in
+                        PSEN            => $33, -- in
+                        PSINCDEC        => $34, -- in
+                        PSDONE          => $35 -- out
+                    );
+        """
+
+    'MMCME3_ADV':
+        'prefix': 'MMCME3_ADV'
+        'body': """
+            ${1:FileName}_I_Mmcme3_Adv_${2:0} : MMCME3_ADV
+                    generic map (
+                        BANDWIDTH               => "OPTIMIZED",     -- string
+                        REF_JITTER1             => 0.010,           -- real
+                        REF_JITTER2             => 0.010,           -- real
+                        DIVCLK_DIVIDE           => 1,               -- integer
+                        CLKIN1_PERIOD           => 0.000,           -- real
+                        CLKIN2_PERIOD           => 0.000,           -- real
+                        IS_CLKIN1_INVERTED      => '0',             -- std_ulogic
+                        IS_CLKIN2_INVERTED      => '0',             -- std_ulogic
+                        IS_CLKINSEL_INVERTED    => '0',             -- std_ulogic
+                        IS_CLKFBIN_INVERTED     => '0',             -- std_ulogic
+                        CLKFBOUT_MULT_F         => 5.000,           -- real
+                        CLKFBOUT_PHASE          => 0.000,           -- real
+                        CLKFBOUT_USE_FINE_PS    => "FALSE",         -- string
+                        CLKOUT0_DIVIDE_F        => 1.000,           -- real
+                        CLKOUT0_DUTY_CYCLE      => 0.500,           -- real
+                        CLKOUT0_PHASE           => 0.000,           -- real
+                        CLKOUT0_USE_FINE_PS     => "FALSE",         -- string
+                        CLKOUT1_DIVIDE          => 1,               -- integer
+                        CLKOUT1_DUTY_CYCLE      => 0.500,           -- real
+                        CLKOUT1_PHASE           => 0.000,           -- real
+                        CLKOUT1_USE_FINE_PS     => "FALSE",         -- string
+                        CLKOUT2_DIVIDE          => 1,               -- integer
+                        CLKOUT2_DUTY_CYCLE      => 0.500,           -- real
+                        CLKOUT2_PHASE           => 0.000,           -- real
+                        CLKOUT2_USE_FINE_PS     => "FALSE",         -- string
+                        CLKOUT3_DIVIDE          => 1,               -- integer
+                        CLKOUT3_DUTY_CYCLE      => 0.500,           -- real
+                        CLKOUT3_PHASE           => 0.000,           -- real
+                        CLKOUT3_USE_FINE_PS     => "FALSE",         -- string
+                        CLKOUT4_CASCADE         => "FALSE",         -- string
+                        CLKOUT4_DIVIDE          => 1,               -- integer
+                        CLKOUT4_DUTY_CYCLE      => 0.500,           -- real
+                        CLKOUT4_PHASE           => 0.000,           -- real
+                        CLKOUT4_USE_FINE_PS     => "FALSE",         -- string
+                        CLKOUT5_DIVIDE          => 1,               -- integer
+                        CLKOUT5_DUTY_CYCLE      => 0.500,           -- real
+                        CLKOUT5_PHASE           => 0.000,           -- real
+                        CLKOUT5_USE_FINE_PS     => "FALSE",         -- string
+                        CLKOUT6_DIVIDE          => 1,               -- integer
+                        CLKOUT6_DUTY_CYCLE      => 0.500,           -- real
+                        CLKOUT6_PHASE           => 0.000,           -- real
+                        CLKOUT6_USE_FINE_PS     => "FALSE",         -- string
+                        COMPENSATION            => "AUTO",          -- string
+                        IS_PSEN_INVERTED        => '0',             -- std_ulogic
+                        IS_PSINCDEC_INVERTED    => '0',             -- std_ulogic
+                        IS_PWRDWN_INVERTED      => '0',             -- std_ulogic
+                        IS_RST_INVERTED         => '0',             -- std_ulogic
+                        SS_EN                   => "FALSE",         -- string
+                        SS_MODE                 => "CENTER_HIGH",   -- string
+                        SS_MOD_PERIOD           => 10000,           -- integer
+                        STARTUP_WAIT            => "FALSE"          -- string
+                    )
+                    port map (
+                        CLKIN1          => $3, -- in
+                        CLKIN2          => $4, -- in
+                        CLKINSEL        => $5, -- in
+                        CLKFBIN         => $6, -- in
+                        RST             => $7, -- in
+                        PWRDWN          => $8, -- in
+                        CLKFBOUT        => $9, -- out
+                        CLKFBOUTB       => $10, -- out
+                        CLKOUT0         => $11, -- out
+                        CLKOUT0B        => $12, -- out
+                        CLKOUT1         => $13, -- out
+                        CLKOUT1B        => $14, -- out
+                        CLKOUT2         => $15, -- out
+                        CLKOUT2B        => $16, -- out
+                        CLKOUT3         => $17, -- out
+                        CLKOUT3B        => $18, -- out
+                        CLKOUT4         => $19, -- out
+                        CLKOUT5         => $20, -- out
+                        CLKOUT6         => $21, -- out
+                        CDDCREQ         => $22, -- in
+                        CDDCDONE        => $23, -- out
+                        PSCLK           => $24, -- in
+                        PSEN            => $25, -- in
+                        PSINCDEC        => $26, -- in
+                        PSDONE          => $27, -- out
+                        DCLK            => $28, -- in
+                        DI              => $29, -- in [15:0]
+                        DADDR           => $30, -- in [6:0]
+                        DEN             => $31, -- in
+                        DWE             => $32, -- in
+                        DO              => $33, -- out [15:0]
+                        DRDY            => $34, -- out
+                        CLKFBSTOPPED    => $35, -- out
+                        CLKINSTOPPED    => $36, -- out
+                        LOCKED          => $37 -- out
+                    );
+        """
+
+    'MMCME4_ADV':
+        'prefix': 'MMCME4_ADV'
+        'body': """
+            ${1:FileName}_I_Mmcme4_Adv_${2:0} : MMCME4_ADV
+                    generic map (
+                        BANDWIDTH               => "OPTIMIZED",     -- string
+                        REF_JITTER1             => 0.010,           -- real
+                        REF_JITTER2             => 0.010,           -- real
+                        DIVCLK_DIVIDE           => 1,               -- integer
+                        CLKIN1_PERIOD           => 0.000,           -- real
+                        CLKIN2_PERIOD           => 0.000,           -- real
+                        IS_CLKIN1_INVERTED      => '0',             -- bit
+                        IS_CLKIN2_INVERTED      => '0',             -- bit
+                        IS_CLKINSEL_INVERTED    => '0',             -- bit
+                        IS_CLKFBIN_INVERTED     => '0',             -- bit
+                        CLKFBOUT_MULT_F         => 5.000,           -- real
+                        CLKFBOUT_PHASE          => 0.000,           -- real
+                        CLKFBOUT_USE_FINE_PS    => "FALSE",         -- string
+                        CLKOUT0_DIVIDE_F        => 1.000,           -- real
+                        CLKOUT0_DUTY_CYCLE      => 0.500,           -- real
+                        CLKOUT0_PHASE           => 0.000,           -- real
+                        CLKOUT0_USE_FINE_PS     => "FALSE",         -- string
+                        CLKOUT1_DIVIDE          => 1,               -- integer
+                        CLKOUT1_DUTY_CYCLE      => 0.500,           -- real
+                        CLKOUT1_PHASE           => 0.000,           -- real
+                        CLKOUT1_USE_FINE_PS     => "FALSE",         -- string
+                        CLKOUT2_DIVIDE          => 1,               -- integer
+                        CLKOUT2_DUTY_CYCLE      => 0.500,           -- real
+                        CLKOUT2_PHASE           => 0.000,           -- real
+                        CLKOUT2_USE_FINE_PS     => "FALSE",         -- string
+                        CLKOUT3_DIVIDE          => 1,               -- integer
+                        CLKOUT3_DUTY_CYCLE      => 0.500,           -- real
+                        CLKOUT3_PHASE           => 0.000,           -- real
+                        CLKOUT3_USE_FINE_PS     => "FALSE",         -- string
+                        CLKOUT4_CASCADE         => "FALSE",         -- string
+                        CLKOUT4_DIVIDE          => 1,               -- integer
+                        CLKOUT4_DUTY_CYCLE      => 0.500,           -- real
+                        CLKOUT4_PHASE           => 0.000,           -- real
+                        CLKOUT4_USE_FINE_PS     => "FALSE",         -- string
+                        CLKOUT5_DIVIDE          => 1,               -- integer
+                        CLKOUT5_DUTY_CYCLE      => 0.500,           -- real
+                        CLKOUT5_PHASE           => 0.000,           -- real
+                        CLKOUT5_USE_FINE_PS     => "FALSE",         -- string
+                        CLKOUT6_DIVIDE          => 1,               -- integer
+                        CLKOUT6_DUTY_CYCLE      => 0.500,           -- real
+                        CLKOUT6_PHASE           => 0.000,           -- real
+                        CLKOUT6_USE_FINE_PS     => "FALSE",         -- string
+                        COMPENSATION            => "AUTO",          -- string
+                        IS_PSEN_INVERTED        => '0',             -- bit
+                        IS_PSINCDEC_INVERTED    => '0',             -- bit
+                        IS_PWRDWN_INVERTED      => '0',             -- bit
+                        IS_RST_INVERTED         => '0',             -- bit
+                        SS_EN                   => "FALSE",         -- string
+                        SS_MODE                 => "CENTER_HIGH",   -- string
+                        SS_MOD_PERIOD           => 10000,           -- integer
+                        STARTUP_WAIT            => "FALSE"          -- string
+                    )
+                    port map (
+                        CLKIN1          => $3, -- in
+                        CLKIN2          => $4, -- in
+                        CLKINSEL        => $5, -- in
+                        CLKFBIN         => $6, -- in
+                        RST             => $7, -- in
+                        PWRDWN          => $8, -- in
+                        CLKFBOUT        => $9, -- out
+                        CLKFBOUTB       => $10, -- out
+                        CLKOUT0         => $11, -- out
+                        CLKOUT0B        => $12, -- out
+                        CLKOUT1         => $13, -- out
+                        CLKOUT1B        => $14, -- out
+                        CLKOUT2         => $15, -- out
+                        CLKOUT2B        => $16, -- out
+                        CLKOUT3         => $17, -- out
+                        CLKOUT3B        => $18, -- out
+                        CLKOUT4         => $19, -- out
+                        CLKOUT5         => $20, -- out
+                        CLKOUT6         => $21, -- out
+                        CDDCREQ         => $22, -- in
+                        CDDCDONE        => $23, -- out
+                        PSCLK           => $24, -- in
+                        PSEN            => $25, -- in
+                        PSINCDEC        => $26, -- in
+                        PSDONE          => $27, -- out
+                        DCLK            => $28, -- in
+                        DI              => $29, -- in [15:0]
+                        DADDR           => $30, -- in [6:0]
+                        DEN             => $31, -- in
+                        DWE             => $32, -- in
+                        DO              => $33, -- out([15:0]
+                        DRDY            => $34, -- out
+                        CLKFBSTOPPED    => $35, -- out
+                        CLKINSTOPPED    => $36, -- out
+                        LOCKED          => $37, -- out
+                    );
+        """
+
+    'MMCME5':
+        'prefix': 'MMCME5'
+        'body': """
+            ${1:FileName}_I_Mmcme5_${2:0} : MMCME5
+                    generic map (
+                        BANDWIDTH              => "OPTIMIZED",     -- string
+                        COMPENSATION           => "AUTO",          -- string
+                        REF_JITTER1            => 0.010,           -- real
+                        REF_JITTER2            => 0.010,           -- real
+                        CLKIN1_PERIOD          => 0.000,           -- real
+                        CLKIN2_PERIOD          => 0.000,           -- real
+                        DIVCLK_DIVIDE          => 1,               -- integer
+                        CLKFBOUT_FRACT         => 0,               -- integer
+                        CLKFBOUT_MULT          => 42,              -- integer
+                        CLKFBOUT_PHASE         => 0.000,           -- real
+                        CLKOUT0_DIVIDE         => 2,               -- integer
+                        CLKOUT0_DUTY_CYCLE     => 0.500,           -- real
+                        CLKOUT0_PHASE          => 0.000,           -- real
+                        CLKOUT0_PHASE_CTRL     => "00",            -- std_logic_vector[1:0]
+                        CLKOUT1_DIVIDE         => 2,               -- integer
+                        CLKOUT1_DUTY_CYCLE     => 0.500,           -- real
+                        CLKOUT1_PHASE          => 0.000,           -- real
+                        CLKOUT1_PHASE_CTRL     => "00",            -- std_logic_vector[1:0]
+                        CLKOUT2_DIVIDE         => 2,               -- integer
+                        CLKOUT2_DUTY_CYCLE     => 0.500,           -- real
+                        CLKOUT2_PHASE          => 0.000,           -- real
+                        CLKOUT2_PHASE_CTRL     => "00",            -- std_logic_vector[1:0]
+                        CLKOUT3_DIVIDE         => 2,               -- integer
+                        CLKOUT3_DUTY_CYCLE     => 0.500,           -- real
+                        CLKOUT3_PHASE          => 0.000,           -- real
+                        CLKOUT3_PHASE_CTRL     => "00",            -- std_logic_vector[1:0]
+                        CLKOUT4_DIVIDE         => 2,               -- integer
+                        CLKOUT4_DUTY_CYCLE     => 0.500,           -- real
+                        CLKOUT4_PHASE          => 0.000,           -- real
+                        CLKOUT4_PHASE_CTRL     => "00",            -- std_logic_vector[1:0]
+                        CLKOUT5_DIVIDE         => 2,               -- integer
+                        CLKOUT5_DUTY_CYCLE     => 0.500,           -- real
+                        CLKOUT5_PHASE          => 0.000,           -- real
+                        CLKOUT5_PHASE_CTRL     => "00",            -- std_logic_vector[1:0]
+                        CLKOUT6_DIVIDE         => 2,               -- integer
+                        CLKOUT6_DUTY_CYCLE     => 0.500,           -- real
+                        CLKOUT6_PHASE          => 0.000,           -- real
+                        CLKOUT6_PHASE_CTRL     => "00",            -- std_logic_vector[1:0]
+                        CLKOUTFB_PHASE_CTRL    => "00",            -- std_logic_vector[1:0]
+                        DESKEW_DELAY1          => 0,               -- integer
+                        DESKEW_DELAY2          => 0,               -- integer
+                        DESKEW_DELAY_EN1       => "FALSE",         -- string
+                        DESKEW_DELAY_EN2       => "FALSE",         -- string
+                        DESKEW_DELAY_PATH1     => "FALSE",         -- string
+                        DESKEW_DELAY_PATH2     => "FALSE",         -- string
+                        IS_CLKFBIN_INVERTED    => '0',             -- bit
+                        IS_CLKIN1_INVERTED     => '0',             -- bit
+                        IS_CLKIN2_INVERTED     => '0',             -- bit
+                        IS_CLKINSEL_INVERTED   => '0',             -- bit
+                        IS_PSEN_INVERTED       => '0',             -- bit
+                        IS_PSINCDEC_INVERTED   => '0',             -- bit
+                        IS_PWRDWN_INVERTED     => '0',             -- bit
+                        IS_RST_INVERTED        => '0',             -- bit
+                        SS_EN                  => "FALSE",         -- string
+                        SS_MODE                => "CENTER_HIGH",   -- string
+                        SS_MOD_PERIOD          => 10000            -- integer
+                    )
+                    port map (
+                        CLKIN1_DESKEW  => $3, -- in
+                        CLKFB1_DESKEW  => $4, -- in
+                        CLKIN2_DESKEW  => $5, -- in
+                        CLKFB2_DESKEW  => $6, -- in
+                        CLKIN1         => $7, -- in
+                        CLKIN2         => $8, -- in
+                        CLKINSEL       => $9, -- in
+                        CLKFBIN        => $10, -- in
+                        CLKFBOUT       => $11, -- out
+                        CLKOUT0        => $12, -- out
+                        CLKOUT1        => $13, -- out
+                        CLKOUT2        => $14, -- out
+                        CLKOUT3        => $15, -- out
+                        CLKOUT4        => $16, -- out
+                        CLKOUT5        => $17, -- out
+                        CLKOUT6        => $18, -- out
+                        PWRDWN         => $19, -- in
+                        RST            => $20, -- in
+                        PSCLK          => $21, -- in
+                        PSEN           => $22, -- in
+                        PSINCDEC       => $23, -- in
+                        PSDONE         => $24, -- out
+                        DCLK           => $25, -- in
+                        DEN            => $26, -- in
+                        DWE            => $27, -- in
+                        DADDR          => $28, -- in [6:0]
+                        DI             => $29, -- in [15:0]
+                        DO             => $30, -- out [15:0]
+                        DRDY           => $31, -- out
+                        CLKFBSTOPPED   => $32, -- out
+                        CLKINSTOPPED   => $33, -- out
+                        LOCKED1_DESKEW => $34, -- out
+                        LOCKED2_DESKEW => $35, -- out
+                        LOCKED_FB      => $36, -- out
+                        LOCKED         => $37 -- out
+                    );
+        """
+
+    'MUXCY':
+        'prefix': 'MUXCY'
+        'body': """MUXCY
+            ${1:FileName}_I_Muxcy_${2:0} :
+                port map (
+                    CI  => $3, -- in
+                    DI  => $4, -- in
+                    S   => $5, -- in
+                    O   => $6 -- out
+                );
+        """
+
+    'MUXF7':
+        'prefix': 'MUXF7'
+        'body': """
+            ${1:FileName}_I_Muxf7_${2:0} : MUXF7
+                port map (
+                    I0  => $3, -- in
+                    I1  => $4, -- in
+                    S   => $5, -- in
+                    O   => $6 -- out
+                );
+        """
+
+    'MUXF8':
+        'prefix': 'MUXF8'
+        'body': """
+            ${1:FileName}_I_Muxf8_${2:0} : MUXF8
+                port map (
+                    I0  => $3, -- in
+                    I1  => $4, -- in
+                    S   => $5, -- in
+                    O   => $6 -- out
+                );
+        """
+
+    'MUXF9':
+        'prefix': 'MUXF9'
+        'body': """
+            ${1:FileName}_I_Muxf9_${2:0} : MUXF9
+                port map (
+                    I0  => $3, -- in
+                    I1  => $4, -- in
+                    S   => $5, -- in
+                    O   => $6 -- out
+                );
+        """
+
+    'OBUF':
+        'prefix': 'OBUF'
+        'body': """
+            ${1:FileName}_I_Obuf_${2:0} : OBUF
+                generic map (DRIVE => 12, IOSTANDARD => "DEFAULT", SLEW => "SLOW")
+                port map (I => $3, O => $4);
+        """
+
+    'OBUFDS':
+        'prefix': 'OBUFDS'
+        'body': """
+            ${1:FileName}_I_Obufds_${2:0} : OBUFDS
+                generic map (IOSTANDARD => "DEFAULT", SLEW => "SLOW")
+                port map (I => $3, O => $4, OB => $5);
+        """
+
+    'OBUFDS_DPHY':
+        'prefix': 'OBUFDS_DPHY'
+        'body': """
+            ${1:FileName}_I_Obufds_Dphy_${2:0} : OBUFDS_DPHY
+                generic map (
+                    IOSTANDARD => "DEFAULT" -- string
+                )
+                port map (
+                    HSTX_I      => $3, -- in
+                    HSTX_T      => $4, -- in
+                    LPTX_I_N    => $5, -- in
+                    LPTX_I_P    => $6, -- in
+                    LPTX_T      => $7, -- in
+                    O           => $8, -- out
+                    OB          => $9 -- out
+                );
+        """
+
+    'OBUFDS_GTE3_ADV':
+        'prefix': 'OBUFDS_GTE3_ADV'
+        'body': """
+            ${1:FileName}_I_Obufds_Gte3_Adv_${2:0} : OBUFDS_GTE3_ADV
+                generic map (
+                    REFCLK_EN_TX_PATH : bit := '0';
+                    REFCLK_ICNTL_TX : std_logic_vector(4 downto 0) := "00000"
+                )
+                port map (
+                    I   => $3, -- in [3:0]
+                    CEB => $4, -- in
+                    RXRECCLK_SEL => $5, -- in [1:0]
+                    O   => $6, -- out
+                    OB  => $7 -- out
+                );
+        """
+
+    'OBUFDS_GTE4_ADV':
+        'prefix': 'OBUFDS_GTE4_ADV'
+        'body': """
+            ${1:FileName}_I_Obufds_Gte4_Adv_${2:0} : OBUFDS_GTE4_ADV
+                generic map (
+                    REFCLK_EN_TX_PATH   => '0',     -- bit
+                    REFCLK_ICNTL_TX     => "00000"  -- [4:0]
+                )
+                port map (
+                    I       => $3, -- in [3:0]
+                    CEB     => $4, -- in
+                    RXRECCLK_SEL => $5, -- in [1:0]
+                    O       => $6, -- out
+                    OB      => $7 -- out
+                );
+        """
+
+    'OBUFDS_GTE5_ADV':
+        'prefix': 'OBUFDS_GTE5_ADV'
+        'body': """
+            ${1:FileName}_I_Obufds_Gte5_Adv_${2:0} : OBUFDS_GTE5_ADV
+                generic map (
+                    REFCLK_EN_TX_PATH   => '0', -- bit
+                    RXRECCLK_SEL        => "00" -- [1:0]
+                )
+                port map (
+                    I   => $3, -- in [3:0]
+                    CEB => $4, -- in
+                    O   => $5, -- out
+                    OB  => $6 -- out
+                );
+        """
+
+    'OBUFT':
+        'prefix': 'OBUFT'
+        'body': """
+            ${1:FileName}_I_Obuft_${2:0} : OBUFT
+                generic map (
+                    CAPACITANCE => "DONT_CARE", -- string
+                    DRIVE       => 12,          -- integer
+                    IOSTANDARD  => "DEFAULT",   -- string
+                    SLEW        => "SLOW"       -- string
+                )
+                port map (
+                    I => $3, -- in
+                    T => $4, -- in
+                    O => $5 -- out
+                );
+        """
+
+    'OBUFTDS':
+        'prefix': 'OBUFTDS'
+        'body': """
+            ${1:FileName}_I_Obuftds_${2:0} : OBUFTDS
+                generic map (
+                    CAPACITANCE => "DONT_CARE", -- string
+                    IOSTANDARD  => "DEFAULT",   -- string
+                    SLEW        => "SLOW"       -- string
+                )
+                port map (
+                    I   => $3, -- in
+                    T   => $4, -- in
+                    O   => $5, -- out
+                    OB  => $6 -- out
+                );
+        """
+
+    'ODDR':
+        'prefix': 'ODDR'
+        'body': """
+            ${1:FileName}_I_Oddr_${2:0} : ODDR
+                generic map (
+                    DDR_CLK_EDGE    => "OPPOSITE_EDGE", -- string
+                    INIT            => '0',             -- bit
+                    SRTYPE          => "SYNC"           -- string
+                    IS_C_INVERTED   => '0',     -- bit
+                    IS_D1_INVERTED  => '0',     -- bit
+                    IS_D2_INVERTED  => '0'      -- bit
+                )
+                port map (
+                    D1  => $3, -- in
+                    D2  => $4, -- in
+                    CE  => $5, -- in
+                    C   => $6, -- in
+                    S   => $7, -- in
+                    R   => $8, -- in
+                    Q   => $9 -- out
+                );
+        """
+
+    'ODDRE1':
+        'prefix': 'ODDRE1'
+        'body': """
+            ${1:FileName}_I_Oddre1_${2:0} : ODDRE1
+                generic map (
+                    IS_C_INVERTED   => '0', -- bit
+                    IS_D1_INVERTED  => '0', -- bit
+                    IS_D2_INVERTED  => '0', -- bit
+                    SRVAL           => '0', -- bit
+                    SIM_DEVICE      => "ULTRASCALE"  -- string
+                )
+                port map (
+                    D1  => $3, -- in
+                    D2  => $4, -- in
+                    C   => $5, -- in
+                    SR  => $6, -- in
+                    Q   => $7 -- out
+                );
+        """
+
+    'ODELAYE2':
+        'prefix': 'ODELAYE2'
+        'body': """
+            ${1:FileName}_I_Odlye2_${2:0} : ODELAYE2
+                generic map (
+                    CINVCTRL_SEL            => "FALSE",     -- string
+                    DELAY_SRC               => "ODATAIN",   -- string
+                    HIGH_PERFORMANCE_MODE   => "FALSE",     -- string
+                    ODELAY_TYPE             => "FIXED",     -- string
+                    ODELAY_VALUE            => 0,           -- integer
+                    PIPE_SEL                => "FALSE",     -- string
+                    REFCLK_FREQUENCY        => 200.0,       -- real
+                    SIGNAL_PATTERN          => "DATA",      -- string
+                    IS_C_INVERTED           => '0',         -- bit
+                    IS_ODATAIN_INVERTED     => '0'          -- bit
+                )
+                port map (
+                    ODATAIN     => $3, -- in
+                    CLKIN       => $4, -- in
+                    CE          => $5, -- in
+                    INC         => $6, -- in
+                    C           => $7, -- in
+                    CINVCTRL    => $8, -- in
+                    LD          => $9, -- in
+                    LDPIPEEN    => $10, -- in
+                    REGRST      => $11, -- in
+                    DATAOUT     => $12, -- out
+                    CNTVALUEOUT => $13, -- out [4:0]
+                    CNTVALUEIN  => $14 -- in [4:0]
+                );
+        """
+
+    'ODELAYE2_FINEDELAY':
+        'prefix': 'ODELAYE2_FINEDELAY'
+        'body': """
+            ${1:FileName}_I_Odlye2_fndly_${2:0} : ODELAYE2_FINEDELAY
+                generic map (
+                    CINVCTRL_SEL        => "FALSE",     -- string
+                    DELAY_SRC           => "ODATAIN",   -- string
+                    FINEDELAY           => "BYPASS",    -- string
+                    HIGH_PERFORMANCE_MODE => "FALSE",   -- string
+                    ODELAY_TYPE         => "FIXED",     -- string
+                    ODELAY_VALUE        => 0,           -- integer
+                    PIPE_SEL            => "FALSE",     -- string
+                    REFCLK_FREQUENCY    => 200.0,       -- real
+                    SIGNAL_PATTERN      => "DATA",      -- string
+                    IS_C_INVERTED       => '0',         -- bit
+                    IS_ODATAIN_INVERTED => '0'          -- bit
+                )
+                port map (
+                    ODATAIN     => $3, -- in
+                    CLKIN       => $4, -- in
+                    CE          => $5, -- in
+                    INC         => $6, -- in
+                    LD          => $7, -- in
+                    LDPIPEEN    => $8, -- in
+                    OFDLY       => $9, -- in [2:0]
+                    REGRST      => $10, -- in
+                    C           => $11, -- in
+                    CINVCTRL    => $12, -- in
+                    CNTVALUEIN  => $13, -- in [4:0]
+                    CNTVALUEOUT => $14, -- out [4:0]
+                    DATAOUT     => $15 -- out
+                );
+        """
+
+    'ODELAYE3':
+        'prefix': 'ODELAYE3'
+        'body': """
+            ${1:FileName}_I_Odlye3_${2:0} : ODELAYE3
+                generic map (
+                    CASCADE             => "NONE",      -- string
+                    DELAY_FORMAT        => "TIME",      -- string
+                    DELAY_TYPE          => "FIXED",     -- string
+                    DELAY_VALUE         => 0,           -- integer
+                    IS_CLK_INVERTED     => '0',         -- std_ulogic
+                    IS_RST_INVERTED     => '0',         -- std_ulogic
+                    REFCLK_FREQUENCY    => 300.0,       -- real
+                    UPDATE_MODE         => "ASYNC",     -- string
+                    SIM_DEVICE          => "ULTRASCALE", -- string
+                    SIM_VERSION         => 2.0          -- real
+                )
+                port map (
+                    ODATAIN     => $3, -- in
+                    CASC_IN     => $4, -- in
+                    CASC_RETURN => $5, -- in
+                    CLK         => $6, -- in
+                    CE          => $7, -- in
+                    RST         => $8, -- in
+                    INC         => $9, -- in
+                    LOAD        => $10, -- in
+                    EN_VTC      => $11, -- in
+                    CNTVALUEIN  => $12, -- in [8:0]
+                    CNTVALUEOUT => $13, -- out [8:0]
+                    CASC_OUT    => $14, -- out
+                    DATAOUT     => $15 -- out
+                );
+        """
+
+    'ODELAYE5':
+        'prefix': 'ODELAYE5'
+        'body': """
+            ${1:FileName}_I_Odlye5_${2:0} : ODELAYE5
+                generic map (
+                    CASCADE         => "FALSE", -- string
+                    IS_CLK_INVERTED => '0',     -- bit
+                    IS_RST_INVERTED => '0'      -- bit
+                )
+                port map (
+                    ODATAIN     => $3, -- in
+                    CASC_IN     => $4, -- in
+                    CE          => $5, -- in
+                    INC         => $6, -- in
+                    LOAD        => $7, -- in
+                    RST         => $8, -- in
+                    CLK         => $9, -- in
+                    CNTVALUEIN  => $10, -- in [4:0]
+                    CNTVALUEOUT => $11, -- out [4:0]
+                    DATAOUT     => $12 -- out
+                );
+        """
+
+    'OSERDES':
+        'prefix': 'OSERDES'
+        'body': """
+            ${1:FileName}_I_Osrds_${2:0} : OSERDES
+                generic map (
+                    DATA_RATE_OQ    => "DDR",    -- string
+                    DATA_RATE_TQ    => "DDR",    -- string
+                    DATA_WIDTH      => 4,        -- integer
+                    INIT_OQ         => '0',      -- bit
+                    INIT_TQ         => '0',      -- bit
+                    SERDES_MODE     => "MASTER", -- string
+                    SRVAL_OQ        => '0',      -- bit
+                    SRVAL_TQ        => '0',      -- bit
+                    TRISTATE_WIDTH  => 4         -- integer
+                )
+                port map (
+                    SHIFTIN1    => $3, -- in
+                    SHIFTIN2    => $4, -- in
+                    D1          => $5, -- in
+                    D2          => $6, -- in
+                    D3          => $7, -- in
+                    D4          => $8, -- in
+                    D5          => $9, -- in
+                    D6          => $10, -- in
+                    OCE         => $11, -- in
+                    REV         => $12, -- in
+                    SR          => $13, -- in
+                    CLK         => $14, -- in
+                    CLKDIV      => $15, -- in
+                    T1          => $16, -- in
+                    T2          => $17, -- in
+                    T3          => $18, -- in
+                    T4          => $19, -- in
+                    TCE         => $20, -- in
+                    SHIFTOUT1   => $21, -- out;
+                    SHIFTOUT2   => $22, -- out;
+                    OQ          => $23, -- out;
+                    TQ          => $24 -- out;
+                );
+        """
+
+    'OSERDESE2':
+        'prefix': 'OSERDESE2'
+        'body': """
+            ${1:FileName}_I_Osrdse2_${2:0} : OSERDESE2
+                generic map (
+                    SERDES_MODE     => "MASTER",-- string
+                    DATA_RATE_TQ    => "DDR",   -- string
+                    TRISTATE_WIDTH  => 4,        -- integer
+                    INIT_TQ         => '0',     -- bit
+                    SRVAL_TQ        => '0',     -- bit
+                    DATA_RATE_OQ    => "DDR",   -- string
+                    DATA_WIDTH      => 4,       -- integer
+                    INIT_OQ         => '0',     -- bit
+                    SRVAL_OQ        => '0',     -- bit
+                    TBYTE_CTL       => "FALSE", -- string
+                    TBYTE_SRC       => "FALSE", -- string
+                    IS_CLKDIV_INVERTED  => '0', -- bit
+                    IS_CLK_INVERTED     => '0', -- bit
+                    IS_D1_INVERTED      => '0', -- bit
+                    IS_D2_INVERTED      => '0', -- bit
+                    IS_D3_INVERTED      => '0', -- bit
+                    IS_D4_INVERTED      => '0', -- bit
+                    IS_D5_INVERTED      => '0', -- bit
+                    IS_D6_INVERTED      => '0', -- bit
+                    IS_D7_INVERTED      => '0', -- bit
+                    IS_D8_INVERTED      => '0', -- bit
+                    IS_T1_INVERTED      => '0', -- bit
+                    IS_T2_INVERTED      => '0', -- bit
+                    IS_T3_INVERTED      => '0', -- bit
+                    IS_T4_INVERTED      => '0', -- bit
+                )
+                port map (
+                    SHIFTOUT1   => $3, -- out
+                    D1          => $4, -- in
+                    D2          => $5, -- in
+                    D3          => $6, -- in
+                    D4          => $7, -- in
+                    D5          => $8, -- in
+                    D6          => $9, -- in
+                    D7          => $10, -- in
+                    D8          => $11, -- in
+                    SHIFTIN1    => $12, -- in
+                    SHIFTIN2    => $13, -- in
+                    OCE         => $14, -- in
+                    RST         => $15, -- in
+                    CLK         => $16, -- in
+                    CLKDIV      => $17, -- in
+                    OFB         => $18, -- out
+                    OQ          => $19, -- out
+                    TBYTEOUT    => $20, -- out
+                    T1          => $21, -- in
+                    T2          => $22, -- in
+                    T3          => $23, -- in
+                    T4          => $24, -- in
+                    TBYTEIN     => $25, -- in
+                    TCE         => $26, -- in
+                    TFB         => $27, -- out
+                    TQ          => $28 -- out
+                    SHIFTOUT2   => $29, -- out
+                );
+        """
+
+    'OSERDESE3':
+        'prefix': 'OSERDESE3'
+        'body': """
+            ${1:FileName}_I_Osrdse3_${2:0} : OSERDESE3
+                generic map (
+                    DATA_WIDTH          => 8, -- 8
+                    INIT                => '0', -- std_ulogic
+                    IS_CLKDIV_INVERTED  => '0', -- std_ulogic
+                    IS_CLK_INVERTED     => '0', -- std_ulogic
+                    IS_RST_INVERTED     => '0', -- std_ulogic
+                    ODDR_MODE           => "FASLE", -- string
+                    OSERDES_D_BYPASS    => "FASLE", -- string
+                    OSERDES_T_BYPASS    => "FASLE", -- string
+                    SIM_DEVICE          => "ULTRASCALE", -- string
+                    SIM_VERSION         => -- real
+                )
+                port map (
+                    D       => $3, -- in [7:0]
+                    CLK     => $4, -- in
+                    CLKDIV  => $5, -- in
+                    RST     => $6, -- in
+                    T       => $7, -- in
+                    T_OUT   => $8, -- out
+                    OQ      => $9 -- out
+                );
+        """
+
+    'OUT_FIFO':
+        'prefix': 'OUT_FIFO'
+        'body': """
+            ${1:FileName}_I_Out_Fifo_${2:0} : OUT_FIFO
+                generic map (
+                    SYNCHRONOUS_MODE    => "FALSE",             -- string
+                    ARRAY_MODE          => "ARRAY_MODE_8_X_4",  -- string
+                    ALMOST_EMPTY_VALUE  => 1,                   -- integer
+                    ALMOST_FULL_VALUE   => 1,                   -- integer
+                    OUTPUT_DISABLE      => "FALSE"              -- string
+                )
+                port map (
+                    D0          => $3, -- in [7:0}
+                    D1          => $4, -- in [7:0}
+                    D2          => $5, -- in [7:0}
+                    D3          => $6, -- in [7:0}
+                    D4          => $7, -- in [7:0}
+                    D5          => $8, -- in [7:0}
+                    D6          => $9, -- in [7:0}
+                    D7          => $10, -- in [7:0}
+                    D8          => $11, -- in [7:0}
+                    D9          => $12, -- in [7:0}
+                    WRCLK       => $13, -- in
+                    WREN        => $14, -- in
+                    RESET       => $15, -- in
+                    RDCLK       => $16, -- in
+                    RDEN        => $17, -- in
+                    Q0          => $18, -- out [3:0]
+                    Q1          => $19, -- out [3:0]
+                    Q2          => $20, -- out [3:0]
+                    Q3          => $21, -- out [3:0]
+                    Q4          => $22, -- out [3:0]
+                    Q5          => $23, -- out [7:0]
+                    Q6          => $24, -- out [7:0]
+                    Q7          => $25, -- out [3:0]
+                    Q8          => $26, -- out [3:0]
+                    Q9          => $27, -- out [3:0]
+                    ALMOSTEMPTY => $28, -- out
+                    ALMOSTFULL  => $29, -- out
+                    EMPTY       => $30, -- out
+                    FULL        => $31 -- out
+                );
+        """
+
+    'PLLE2_ADV':
+        'prefix': 'PLLE2_ADV'
+        'body': """
+            ${1:FileName}_I_Plle2_Adv_${2:0} : PLLE2_ADV
+                generic map(
+                    BANDWIDTH           => "OPTIMIZED", -- string
+                    CLKFBOUT_MULT       => 5,           -- integer
+                    CLKFBOUT_PHASE      => 0.0,         -- real
+                    CLKIN1_PERIOD       => 0.0,         -- real
+                    CLKIN2_PERIOD       => 0.0,         -- real
+                    CLKOUT0_DIVIDE      => 1,           -- integer
+                    CLKOUT0_DUTY_CYCLE  => 0.5,         -- real
+                    CLKOUT0_PHASE       => 0.0,         -- real
+                    CLKOUT1_DIVIDE      => 1,           -- integer
+                    CLKOUT1_DUTY_CYCLE  => 0.5,         -- real
+                    CLKOUT1_PHASE       => 0.0,         -- real
+                    CLKOUT2_DIVIDE      => 1,           -- integer
+                    CLKOUT2_DUTY_CYCLE  => 0.5,         -- real
+                    CLKOUT2_PHASE       => 0.0,         -- real
+                    CLKOUT3_DIVIDE      => 1,           -- integer
+                    CLKOUT3_DUTY_CYCLE  => 0.5,         -- real
+                    CLKOUT3_PHASE       => 0.0,         -- real
+                    CLKOUT4_DIVIDE      => 1,           -- integer
+                    CLKOUT4_DUTY_CYCLE  => 0.5,         -- real
+                    CLKOUT4_PHASE       => 0.0,         -- real
+                    CLKOUT5_DIVIDE      => 1,           -- integer
+                    CLKOUT5_DUTY_CYCLE  => 0.5,         -- real
+                    CLKOUT5_PHASE       => 0.0,         -- real
+                    COMPENSATION        => "ZHOLD",     -- string
+                    DIVCLK_DIVIDE       => 1,           -- integer
+                    REF_JITTER1         => 0.0,         -- real
+                    REF_JITTER2         => 0.0,         -- real
+                    STARTUP_WAIT        => "FALSE",     -- string
+                    IS_CLKINSEL_INVERTED    => '0',     -- bit
+                    IS_PWRDWN_INVERTED      => '0',     -- bit
+                    IS_RST_INVERTED         => '0'      -- bit
+                )
+                port map (
+                    CLKIN1      => $3, -- in
+                    CLKINSEL    => $4, -- in
+                    CLKFBIN     => $5, -- in
+                    CLKFBOUT    => $6, -- out
+                    CLKOUT0     => $7, -- out
+                    CLKOUT1     => $8, -- out
+                    CLKOUT2     => $9, -- out
+                    CLKOUT3     => $10, -- out
+                    CLKOUT4     => $11, -- out
+                    CLKOUT5     => $12, -- out
+                    RST         => $13, -- in
+                    PWRDWN      => $14, -- in
+                    LOCKED      => $15, -- out
+                    DI          => $16, -- in [15:0]
+                    DADDR       => $17, -- in [6:0]
+                    DEN         => $18, -- in
+                    DWE         => $19, -- in
+                    DCLK        => $20, -- in
+                    DO          => $21, -- out [15:0]
+                    DRDY        => $22 -- out
+                    CLKIN2      => $23, -- in
+                );
+        """
+
+    'PLLE3_ADV':
+        'prefix': 'PLLE3_ADV'
+        'body': """
+            ${1:FileName}_I_Plle3_Adv_${2:0} : PLLE3_ADV
+                generic map (
+                    CLKFBOUT_MULT       => 5,       -- integer
+                    CLKFBOUT_PHASE      => 0.000,    -- real
+                    CLKIN_PERIOD        => 0.000,    -- real
+                    CLKOUT0_DIVIDE      => 1,        -- integer
+                    CLKOUT0_DUTY_CYCLE  => 0.500,    -- real
+                    CLKOUT0_PHASE       => 0.000,    -- real
+                    CLKOUT1_DIVIDE      => 1,        -- integer
+                    CLKOUT1_DUTY_CYCLE  => 0.500,    -- real
+                    CLKOUT1_PHASE       => 0.000,    -- real
+                    CLKOUTPHY_MODE      => "VCO_2X", -- string
+                    COMPENSATION        => "AUTO",   -- string
+                    DIVCLK_DIVIDE       => 1,        -- integer
+                    IS_CLKFBIN_INVERTED => '0',      -- std_ulogic
+                    IS_CLKIN_INVERTED   => '0',      -- std_ulogic
+                    IS_PWRDWN_INVERTED  => '0',      -- std_ulogic
+                    IS_RST_INVERTED     => '0',      -- std_ulogic
+                    REF_JITTER          => 0.010,    -- real
+                    STARTUP_WAIT        => "FALSE"  -- string
+                )
+                port map (
+                    CLKIN       => $3, -- in
+                    CLKFBIN     => $4, -- in
+                    RST         => $5, -- in
+                    PWRDWN      => $6, -- in
+                    CLKOUTPHYEN => $7, -- in
+                    CLKFBOUT    => $8, -- out
+                    CLKOUT0     => $9, -- out
+                    CLKOUT0B    => $10, -- out
+                    CLKOUT1     => $11, -- out
+                    CLKOUT1B    => $12, -- out
+                    CLKOUTPHY   => $13, -- out
+                    DCLK        => $14, -- in
+                    DI          => $15, -- in [15:0]
+                    DADDR       => $16, -- in [6:0]
+                    DEN         => $17, -- in
+                    DWE         => $18, -- in
+                    DO          => $19, -- out [15:0]
+                    DRDY        => $20, -- out
+                    LOCKED      => $21 -- out
+                );
+        """
+
+    'PLLE4_ADV':
+        'prefix': 'PLLE4_ADV'
+        'body': """
+            ${1:FileName}_I_Plle4_Adv_${2:0} :PLLE4_ADV
+                generic map (
+                    CLKFBOUT_MULT       => 5,       -- integer
+                    CLKFBOUT_PHASE      => 0.000,    -- real
+                    CLKIN_PERIOD        => 0.000,    -- real
+                    CLKOUT0_DIVIDE      => 1,        -- integer
+                    CLKOUT0_DUTY_CYCLE  => 0.500,    -- real
+                    CLKOUT0_PHASE       => 0.000,    -- real
+                    CLKOUT1_DIVIDE      => 1,        -- integer
+                    CLKOUT1_DUTY_CYCLE  => 0.500,    -- real
+                    CLKOUT1_PHASE       => 0.000,    -- real
+                    CLKOUTPHY_MODE      => "VCO_2X", -- string
+                    COMPENSATION        => "AUTO",   -- string
+                    DIVCLK_DIVIDE       => 1,        -- integer
+                    IS_CLKFBIN_INVERTED => '0',      -- std_ulogic
+                    IS_CLKIN_INVERTED   => '0',      -- std_ulogic
+                    IS_PWRDWN_INVERTED  => '0',      -- std_ulogic
+                    IS_RST_INVERTED     => '0',      -- std_ulogic
+                    REF_JITTER          => 0.010,    -- real
+                    STARTUP_WAIT        => "FALSE"  -- string
+                )
+                port map (
+                    CLKIN       => $3, -- in
+                    CLKFBIN     => $4, -- in
+                    RST         => $5, -- in
+                    PWRDWN      => $6, -- in
+                    CLKOUTPHYEN => $7, -- in
+                    CLKFBOUT    => $8, -- out
+                    CLKOUT0     => $9, -- out
+                    CLKOUT0B    => $10, -- out
+                    CLKOUT1     => $11, -- out
+                    CLKOUT1B    => $12, -- out
+                    CLKOUTPHY   => $13, -- out
+                    DCLK        => $14, -- in
+                    DI          => $15, -- in [15:0]
+                    DADDR       => $16, -- in [6:0]
+                    DEN         => $17, -- in
+                    DWE         => $18, -- in
+                    DO          => $19, -- out [15:0]
+                    DRDY        => $20, -- out
+                    LOCKED      => $21 -- out
+                );
+        """
+
+    'RAM256X1D':
+        'prefix': 'RAM256X1D'
+        'body': """
+            ${1:FileName}_I_Ram256x1d_${2:0} : RAM256X1D
+                generic map (
+                    INIT => X"0000000000000000000000000000000000000000000000000000000000000000", -- [255:0]
+                    IS_WCLK_INVERTED => '0' -- bit
+                )
+                port map (
+                    D       => $3, -- in
+                    A       => $4, -- in [7:0]
+                    WE      => $5, -- in
+                    DPRA    => $6, -- in [7:0]
+                    WCLK    => $7, -- in
+                    DPO     => $8, -- out
+                    SPO     => $9, -- out
+                );
+        """
+
+    'RAM32M':
+        'prefix': 'RAM32M'
+        'body': """
+            ${1:FileName}_I_Ram32m_${2:0} : RAM32M
+                generic map (
+                    INIT_A => X"0000000000000000",  -- [63:0]
+                    INIT_B => X"0000000000000000",  -- [63:0]
+                    INIT_C => X"0000000000000000",  -- [63:0]
+                    INIT_D => X"0000000000000000",  -- [63:0]
+                    IS_WCLK_INVERTED => '0'         -- bit
+                )
+                port map (
+                    DIA     => $3, -- in [1:0]
+                    DIB     => $4, -- in [1:0]
+                    DIC     => $5, -- in [1:0]
+                    DID     => $6, -- in [1:0]
+                    ADDRA   => $7, -- in [4:0]
+                    ADDRB   => $8, -- in [4:0]
+                    ADDRC   => $9, -- in [4:0]
+                    ADDRD   => $10, -- in [4:0]
+                    WE      => $11, -- in
+                    WCLK    => $12, -- in
+                    DOA     => $13, -- out [1:0]
+                    DOB     => $14, -- out [1:0]
+                    DOC     => $15, -- out [1:0]
+                    DOD     => $16 -- out [1:0]
+                );
+        """
+
+    'RAM32X1D':
+        'prefix': 'RAM32X1D'
+        'body': """
+            ${1:FileName}_I_Ram32x1d_${2:0} : RAM32X1D
+                generic map (
+                    INIT => X"00000000",    -- [31:0]
+                    IS_WCLK_INVERTED => '0' -- bit
+                )
+                port map (
+                    D       => $3, -- in
+                    A0      => $4, -- in
+                    A1      => $5, -- in
+                    A2      => $6, -- in
+                    A3      => $7, -- in
+                    A4      => $8, -- in
+                    DPRA0   => $9, -- in
+                    DPRA1   => $10, -- in
+                    DPRA2   => $11, -- in
+                    DPRA3   => $12, -- in
+                    DPRA4   => $13, -- in
+                    WE      => $14, -- in
+                    WCLK    => $15, -- in
+                    DPO     => $16, -- out
+                    SPO     => $17 -- out
+                );
+        """
+
+    'RAM64M':
+        'prefix': 'RAM64M'
+        'body': """
+            ${1:FileName}_I_Ram64m_${2:0} : RAM64M
+                generic map (
+                    INIT_A => X"0000000000000000",  -- [63:0]
+                    INIT_B => X"0000000000000000",  -- [63:0]
+                    INIT_C => X"0000000000000000",  -- [63:0]
+                    INIT_D => X"0000000000000000",  -- [63:0]
+                    IS_WCLK_INVERTED => '0'         -- bit
+                )
+                port map (
+                    DIA     => $3, -- in
+                    DIB     => $4, -- in
+                    DIC     => $5, -- in
+                    DID     => $6, -- in
+                    ADDRA   => $7, -- in [5:0]
+                    ADDRB   => $8, -- in [5:0]
+                    ADDRC   => $9, -- in [5:0]
+                    ADDRD   => $10, -- in [5:0]
+                    WE      => $11, -- in
+                    WCLK    => $12, -- in
+                    DOA     => $13, -- out
+                    DOB     => $14, -- out
+                    DOC     => $15, -- out
+                    DOD     => $16 -- out
+                );
+        """
+
+    'RAM64X1D':
+        'prefix': 'RAM64X1D'
+        'body': """
+            ${1:FileName}_I_Ram64x1d_${2:0} : RAM64X1D
+                generic map (
+                    INIT => X"0000000000000000",    -- [63:0]
+                    IS_WCLK_INVERTED => '0'         -- bit
+                )
+                port map (
+                    D       => $3, -- in
+                    A0      => $4, -- in
+                    A1      => $5, -- in
+                    A2      => $6, -- in
+                    A3      => $7, -- in
+                    A4      => $8, -- in
+                    A5      => $9, -- in
+                    DPRA0   => $10, -- in
+                    DPRA1   => $11, -- in
+                    DPRA2   => $12, -- in
+                    DPRA3   => $13, -- in
+                    DPRA4   => $14, -- in
+                    DPRA5   => $15, -- in
+                    WE      => $16, -- in
+                    WCLK    => $17, -- in
+                    DPO     => $18, -- out
+                    SPO     => $19 -- out
+                );
+        """
+
+    'RAMB36E1':
+        'prefix': 'RAMB36E1'
+        'body': """
+            ${1:FileName}_I_Ramb36e1_${2:0} : RAMB36E1
+                generic map (
+                    INIT_FILE           => "NONE",          -- string
+                    RAM_MODE            => "TDP",           -- string
+                    WRITE_MODE_A        => "WRITE_FIRST",   -- string
+                    WRITE_MODE_B        => "WRITE_FIRST",   -- string
+                    READ_WIDTH_A        => 0,               -- integer
+                    READ_WIDTH_B        => 0,               -- integer
+                    WRITE_WIDTH_A       => 0,               -- integer
+                    WRITE_WIDTH_B       => 0,               -- integer
+                    RAM_EXTENSION_A     => "NONE",          -- string
+                    RAM_EXTENSION_B     => "NONE",          -- string
+                    DOA_REG             => 0,               -- integer
+                    DOB_REG             => 0,               -- integer
+                    INIT_A              => X"000000000",    -- bit_vector
+                    INIT_B              => X"000000000",    -- bit_vector
+                    RSTREG_PRIORITY_A   => "RSTREG",        -- string
+                    RSTREG_PRIORITY_B   => "RSTREG",        -- string
+                    SRVAL_A             => X"000000000",    -- bit_vector
+                    SRVAL_B             => X"000000000",    -- bit_vector
+                    EN_ECC_READ         => FALSE,           -- boolean
+                    EN_ECC_WRITE        => FALSE,           -- boolean
+                    RDADDR_COLLISION_HWCONFIG => "DELAYED_WRITE", -- string
+                    SIM_COLLISION_CHECK => "ALL",           -- string
+                    SIM_DEVICE          => "VIRTEX6",       -- string
+                    IS_CLKARDCLK_INVERTED       => '0',     -- bit
+                    IS_CLKBWRCLK_INVERTED       => '0',     -- bit
+                    IS_ENARDEN_INVERTED         => '0',     -- bit
+                    IS_ENBWREN_INVERTED         => '0',     -- bit
+                    IS_RSTRAMARSTRAM_INVERTED   => '0',     -- bit
+                    IS_RSTRAMB_INVERTED         => '0',     -- bit
+                    IS_RSTREGARSTREG_INVERTED   => '0',     -- bit
+                    IS_RSTREGB_INVERTED         => '0'     -- bit
+                )
+                port map (
+                    CASCADEINA          => $3, -- in
+                    DIPADIP             => $4, -- in [3:0]
+                    DIADI               => $5, -- in [31:0]
+                    DOPADOP             => $6, -- out [3:0]
+                    DOADO               => $7, -- out [31:0]
+                    CASCADEOUTA         => $8, -- out
+                    ADDRARDADDR         => $9, -- in [15:0]
+                    ENARDEN             => $10, -- in
+                    REGCEAREGCE         => $11, -- in
+                    WEA                 => $12, -- in [3:0]
+                    CLKARDCLK           => $13, -- in
+                    RSTREGARSTREG       => $14, -- in
+                    RSTRAMARSTRAM       => $15, -- in
+                    CASCADEINB          => $16, -- in
+                    DIPBDIP             => $17, -- in [3:0]
+                    DIBDI               => $18, -- in [31:0]
+                    DOPBDOP             => $19, -- out [3:0]
+                    DOBDO               => $20, -- out [31:0]
+                    CASCADEOUTB         => $21, -- out
+                    ADDRBWRADDR         => $22, -- in [15:0]
+                    ENBWREN             => $23, -- in
+                    REGCEB              => $24, -- in
+                    WEBWE               => $25, -- in [7:0]
+                    CLKBWRCLK           => $26, -- in
+                    RSTREGB             => $27, -- in
+                    RSTRAMB             => $28, -- in
+                    INJECTDBITERR       => $29, -- in
+                    INJECTSBITERR       => $30, -- in
+                    DBITERR             => $31, -- out
+                    ECCPARITY           => $32, -- out [7:0]
+                    RDADDRECC           => $33, -- out [8:0]
+                    SBITERR             => $34 -- out
+                );
+        """
+
+    'RAMB36E2':
+        'prefix': 'RAMB36E2'
+        'body': """
+            ${1:FileName}_I_Ramb36e2_${2:0} : RAMB36E2
+                generic map [
+                    INIT_FILE           => "NONE",          -- string
+                    CLOCK_DOMAINS       => "INDEPENDENT",   -- string
+                    WRITE_MODE_A        => "NO_CHANGE",     -- string
+                    WRITE_MODE_B        => "NO_CHANGE",     -- string
+                    READ_WIDTH_A        => 0,               -- integer
+                    READ_WIDTH_B        => 0,               -- integer
+                    WRITE_WIDTH_A       => 0,               -- integer
+                    WRITE_WIDTH_B       => 0,               -- integer
+                    CASCADE_ORDER_A     => "NONE",          -- string
+                    CASCADE_ORDER_B     => "NONE",          -- string
+                    ENADDRENA           => "FALSE",         -- string
+                    ENADDRENB           => "FALSE",         -- string
+                    RDADDRCHANGEA       => "FALSE",         -- string
+                    RDADDRCHANGEB       => "FALSE",         -- string
+                    DOA_REG             => 1,               -- integer
+                    DOB_REG             => 1,               -- integer
+                    INIT_A              => X"000000000",    -- [35:0]
+                    INIT_B              => X"000000000",    -- [35:0]
+                    RSTREG_PRIORITY_A   => "RSTREG",        -- string
+                    RSTREG_PRIORITY_B   => "RSTREG",        -- string
+                    SRVAL_A             => X"000000000",    -- [35:0]
+                    SRVAL_B             => X"000000000",    -- [35:0]
+                    EN_ECC_PIPE         => "FALSE",         -- string
+                    EN_ECC_READ         => "FALSE",         -- string
+                    EN_ECC_WRITE        => "FALSE",         -- string
+                    SLEEP_ASYNC         => "FALSE",         -- string
+                    SIM_COLLISION_CHECK => "ALL",           -- string
+                    IS_CLKARDCLK_INVERTED       => '0',     -- bit
+                    IS_CLKBWRCLK_INVERTED       => '0',     -- bit
+                    IS_ENARDEN_INVERTED         => '0',     -- bit
+                    IS_ENBWREN_INVERTED         => '0',     -- bit
+                    IS_RSTRAMARSTRAM_INVERTED   => '0',     -- bit
+                    IS_RSTRAMB_INVERTED         => '0',     -- bit
+                    IS_RSTREGARSTREG_INVERTED   => '0',     -- bit
+                    IS_RSTREGB_INVERTED         => '0'      -- bit
+                )
+                port map [
+                    ADDRARDADDR     => $3, -- in [14:0],
+                    ADDRBWRADDR     => $4, -- in [14:0],
+                    ADDRENA         => $5, -- in
+                    ADDRENB         => $6, -- in
+                    CASDIMUXA       => $7, -- in
+                    CASDIMUXB       => $8, -- in
+                    CASDINA         => $9, -- in [31:0],
+                    CASDINB         => $10, -- in [31:0],
+                    CASDINPA        => $11, -- in [3:0],
+                    CASDINPB        => $12, -- in [3:0],
+                    CASDOMUXA       => $13, -- in
+                    CASDOMUXB       => $14, -- in
+                    CASDOMUXEN_A    => $15, -- in
+                    CASDOMUXEN_B    => $16, -- in
+                    CASINDBITERR    => $17, -- in
+                    CASINSBITERR    => $18, -- in
+                    CASOREGIMUXA    => $19, -- in
+                    CASOREGIMUXB    => $20, -- in
+                    CASOREGIMUXEN_A => $21, -- in
+                    CASOREGIMUXEN_B => $22, -- in
+                    CLKARDCLK       => $23, -- in
+                    CLKBWRCLK       => $24, -- in
+                    DINADIN         => $25, -- in [31:0],
+                    DINBDIN         => $26, -- in [31:0],
+                    DINPADINP       => $27, -- in [3:0],
+                    DINPBDINP       => $28, -- in [3:0],
+                    ECCPIPECE       => $29, -- in
+                    ENARDEN         => $30, -- in
+                    ENBWREN         => $31, -- in
+                    INJECTDBITERR   => $32, -- in
+                    INJECTSBITERR   => $33, -- in
+                    REGCEAREGCE     => $34, -- in
+                    REGCEB          => $35, -- in
+                    RSTRAMARSTRAM   => $36, -- in
+                    RSTRAMB         => $37, -- in
+                    RSTREGARSTREG   => $38, -- in
+                    RSTREGB         => $39, -- in
+                    SLEEP           => $40, -- in
+                    WEA             => $41, -- in [3:0],
+                    WEBWE           => $42, -- in [7:0]
+                    CASDOUTA        => $43, -- out [31:0],
+                    CASDOUTB        => $44, -- out [31:0],
+                    CASDOUTPA       => $45, -- out [3:0],
+                    CASDOUTPB       => $46, -- out [3:0],
+                    CASOUTDBITERR   => $47, -- out
+                    CASOUTSBITERR   => $48, -- out
+                    DBITERR         => $49, -- out
+                    DOUTADOUT       => $50, -- out [31:0],
+                    DOUTBDOUT       => $51, -- out [31:0],
+                    DOUTPADOUTP     => $52, -- out [3:0],
+                    DOUTPBDOUTP     => $53, -- out [3:0],
+                    ECCPARITY       => $54, -- out [7:0],
+                    RDADDRECC       => $55, -- out [8:0],
+                    SBITERR         => $56 -- out
+                );
+        """
+
+    'RAMB36E5':
+        'prefix': 'RAMB36E5'
+        'body': """
+            ${1:FileName}_I_Ramb36e5_${2:0} : RAMB36E5
+                generic map (
+                    INIT_FILE           => "NONE",          -- string
+                    CLOCK_DOMAINS       => "INDEPENDENT",   -- string
+                    WRITE_MODE_A        => "NO_CHANGE",     -- string
+                    WRITE_MODE_B        => "NO_CHANGE",     -- string
+                    READ_WIDTH_A        => 72,              -- integer
+                    READ_WIDTH_B        => 36,              -- integer
+                    WRITE_WIDTH_A       => 36,              -- integer
+                    WRITE_WIDTH_B       => 72               -- integer
+                    CASCADE_ORDER_A     => "NONE",          -- string
+                    CASCADE_ORDER_B     => "NONE",          -- string
+                    DOA_REG             => 1,               -- integer
+                    DOB_REG             => 1,               -- integer
+                    RST_MODE_A          => "SYNC",          -- string
+                    RST_MODE_B          => "SYNC",          -- string
+                    RSTREG_PRIORITY_A   => "RSTREG",        -- string
+                    RSTREG_PRIORITY_B   => "RSTREG",        -- string
+                    SRVAL_A             => X"000000000",    -- [35:0]
+                    SRVAL_B             => X"000000000",    -- [35:0]
+                    EN_ECC_PIPE         => "FALSE",         -- string
+                    EN_ECC_READ         => "FALSE",         -- string
+                    EN_ECC_WRITE        => "FALSE",         -- string
+                    BWE_MODE_B          => "PARITY_INTERLEAVED", -- string
+                    PR_SAVE_DATA        => "FALSE",         -- string
+                    SIM_COLLISION_CHECK => "ALL",           -- string
+                    SLEEP_ASYNC         => "FALSE",         -- string
+                    IS_ARST_A_INVERTED          => '0',     -- bit
+                    IS_ARST_B_INVERTED          => '0',     -- bit
+                    IS_CLKARDCLK_INVERTED       => '0',     -- bit
+                    IS_CLKBWRCLK_INVERTED       => '0',     -- bit
+                    IS_ENARDEN_INVERTED         => '0',     -- bit
+                    IS_ENBWREN_INVERTED         => '0',     -- bit
+                    IS_RSTRAMARSTRAM_INVERTED   => '0',     -- bit
+                    IS_RSTRAMB_INVERTED         => '0',     -- bit
+                    IS_RSTREGARSTREG_INVERTED   => '0',     -- bit
+                    IS_RSTREGB_INVERTED         => '0'      -- bit
+                )
+                port map (
+                    ADDRARDADDR     => $3, -- in [11:0]
+                    ADDRBWRADDR     => $4, -- in [11:0]
+                    ARST_A          => $5, -- in
+                    ARST_B          => $6, -- in
+                    CASDINA         => $7, -- in [31:0]
+                    CASDINB         => $8, -- in [31:0]
+                    CASDINPA        => $9, -- in [3:0]
+                    CASDINPB        => $10, -- in [3:0]
+                    CASDOMUXA       => $11, -- in
+                    CASDOMUXB       => $12, -- in
+                    CASDOMUXEN_A    => $13, -- in
+                    CASDOMUXEN_B    => $14, -- in
+                    CASINDBITERR    => $15, -- in
+                    CASINSBITERR    => $16, -- in
+                    CASOREGIMUXA    => $17, -- in
+                    CASOREGIMUXB    => $18, -- in
+                    CASOREGIMUXEN_A => $19, -- in
+                    CASOREGIMUXEN_B => $20, -- in
+                    CLKARDCLK       => $21, -- in
+                    CLKBWRCLK       => $22, -- in
+                    DINADIN         => $23, -- in [31:0]
+                    DINBDIN         => $24, -- in [31:0]
+                    DINPADINP       => $25, -- in [3:0]
+                    DINPBDINP       => $26, -- in [3:0]
+                    ECCPIPECE       => $27, -- in
+                    ENARDEN         => $28, -- in
+                    ENBWREN         => $29, -- in
+                    INJECTDBITERR   => $30, -- in
+                    INJECTSBITERR   => $31, -- in
+                    REGCEAREGCE     => $32, -- in
+                    REGCEB          => $33, -- in
+                    RSTRAMARSTRAM   => $34, -- in
+                    RSTRAMB         => $35, -- in
+                    RSTREGARSTREG   => $36, -- in
+                    RSTREGB         => $37, -- in
+                    SLEEP           => $38, -- in
+                    WEA             => $39, -- in [3:0]
+                    WEBWE           => $40, -- in [8:0]
+                    CASDOUTA        => $41, -- out [31:0]
+                    CASDOUTB        => $42, -- out [31:0]
+                    CASDOUTPA       => $43, -- out [3:0]
+                    CASDOUTPB       => $44, -- out [3:0]
+                    CASOUTDBITERR   => $45, -- out
+                    CASOUTSBITERR   => $46, -- out
+                    DBITERR         => $47, -- out
+                    DOUTADOUT       => $48, -- out [31:0]
+                    DOUTBDOUT       => $49, -- out [31:0]
+                    DOUTPADOUTP     => $50, -- out [3:0]
+                    DOUTPBDOUTP     => $51, -- out [3:0]
+                    SBITERR         => $52 -- out
+                ),
+        """
+
+    'RAMD32':
+        'prefix': 'RAMD32'
+        'body': """
+            ${1:FileName}_I_Ramd32_${2:0} : RAMD32
+                generic map (
+                    INIT            => X"00000000", -- [31:0]
+                    IS_CLK_INVERTED => '0'          -- bit
+                )
+                port map (
+                    I       => $3, -- in
+                    WE      => $4, -- in
+                    CLK     => $5, -- in
+                    RADR0   => $6, -- in
+                    RADR1   => $7, -- in
+                    RADR2   => $8, -- in
+                    RADR3   => $9, -- in
+                    RADR4   => $10, -- in
+                    WADR0   => $11, -- in
+                    WADR1   => $12, -- in
+                    WADR2   => $13, -- in
+                    WADR3   => $14, -- in
+                    WADR4   => $15, -- in
+                    O       => $16 -- out
+                );
+        """
+
+    'RIU_OR':
+        'prefix': 'RIU_OR'
+        'body': """
+            ${1:FileName}_I_Riu_Or_${2:0} : RIU_OR
+                generic map (
+                    SIM_DEVICE  => "ULTRASCALE", -- string
+                    SIM_VERSION => 2.0           -- real
+                )
+                port map (
+                    RIU_RD_DATA_LOW     => $3, -- in [15:0]
+                    RIU_RD_DATA_UPP     => $4, -- in [15:0]
+                    RIU_RD_VALID_LOW    => $5, -- in
+                    RIU_RD_VALID_UPP    => $6, -- in
+                    RIU_RD_DATA         => $7, -- out [15:0]
+                    RIU_RD_VALID        => $8 -- out
+                );
+        """
+
+    'RXTX_BITSLICE':
+        'prefix': 'RXTX_BITSLICE'
+        'body': """
+            ${1:FileName}_I_Rxtx_btslce_${2:0} : RXTX_BITSLICE
+                generic map (
+                    RX_DATA_TYPE            => "NONE",      -- string
+                    RX_DATA_WIDTH           => 8,           -- integer
+                    RX_DELAY_FORMAT         => "TIME",      -- string
+                    RX_DELAY_TYPE           => "FIXED",     -- string
+                    RX_DELAY_VALUE          => 0,           -- integer
+                    TX_DATA_WIDTH           => 8,           -- integer
+                    TX_DELAY_FORMAT         => "TIME",      -- string
+                    TX_DELAY_TYPE           => "FIXED",     -- string
+                    TX_DELAY_VALUE          => 0,           -- integer
+                    RX_REFCLK_FREQUENCY     => 300.0,       -- real
+                    TX_REFCLK_FREQUENCY     => 300.0,       -- real
+                    RX_UPDATE_MODE          => "ASYNC",     -- string
+                    TX_UPDATE_MODE          => "ASYNC",     -- string
+                    FIFO_SYNC_MODE          => "FALSE",     -- string
+                    INIT                    => '1',         -- bit
+                    LOOPBACK                => "FALSE",     -- string
+                    NATIVE_ODELAY_BYPASS    => "FALSE",     -- string
+                    TBYTE_CTL               => "TBYTE_IN",  -- string
+                    TX_OUTPUT_PHASE_90      => "FALSE",     -- string
+                    ENABLE_PRE_EMPHASIS     => "FALSE",     -- string
+                    IS_RX_CLK_INVERTED      => '0',         -- bit
+                    IS_RX_RST_DLY_INVERTED  => '0',         -- bit
+                    IS_RX_RST_INVERTED      => '0',         -- bit
+                    IS_TX_CLK_INVERTED      => '0',         -- bit
+                    IS_TX_RST_DLY_INVERTED  => '0',         -- bit
+                    IS_TX_RST_INVERTED      => '0',         -- bit
+                    SIM_DEVICE              => "ULTRASCALE" -- string
+                    SIM_VERSION             => 2.0          -- real
+                )
+                port map (
+                    DATAIN          => $3, -- in
+                    Q               => $4, -- out [7:0]
+                    RX_RST          => $5, -- in
+                    RX_CLK          => $6, -- in
+                    RX_CE           => $7, -- in
+                    RX_RST_DLY      => $8, -- in
+                    RX_INC          => $9, -- in
+                    RX_LOAD         => $10, -- in
+                    RX_EN_VTC       => $11, -- in
+                    RX_CNTVALUEIN   => $12, -- in [8:0]
+                    RX_CNTVALUEOUT  => $13, -- out [8:0]
+                    FIFO_RD_CLK     => $14, -- in
+                    FIFO_RD_EN      => $15, -- in
+                    FIFO_EMPTY      => $16, -- out
+                    FIFO_WRCLK_OUT  => $17, -- out
+                    RX_BIT_CTRL_IN  => $18, -- in [39:0]
+                    TX_BIT_CTRL_IN  => $19, -- in [39:0]
+                    RX_BIT_CTRL_OUT => $20, -- out [39:0]
+                    TX_BIT_CTRL_OUT => $21, -- out [39:0]
+                    D               => $22, -- in [7:0]
+                    T               => $23, -- in
+                    TBYTE_IN        => $24, -- in
+                    O               => $25, -- out
+                    T_OUT           => $26, -- out
+                    TX_RST          => $27, -- in
+                    TX_CLK          => $28, -- in
+                    TX_CE           => $29, -- in
+                    TX_RST_DLY      => $30, -- in
+                    TX_INC          => $31, -- in
+                    TX_LOAD         => $32, -- in
+                    TX_EN_VTC       => $33, -- in
+                    TX_CNTVALUEIN   => $34, -- in [8:0]
+                    TX_CNTVALUEOUT  => $35 -- out [8:0]
+                );
+        """
+
+    'RX_BITSLICE':
+        'prefix': 'RX_BITSLICE'
+        'body': """
+            ${1:FileName}_I_Rx_Btslce_${2:0} : RX_BITSLICE
+                generic map(
+                    CASCADE                 => "FALSE",     -- string
+                    DATA_TYPE               => "NONE",      -- string
+                    DATA_WIDTH              => 8,           -- integer
+                    DELAY_FORMAT            => "TIME",      -- string
+                    DELAY_TYPE              => "FIXED",     -- string
+                    DELAY_VALUE             => 0,           -- integer
+                    DELAY_VALUE_EXT         => 0,           -- integer
+                    FIFO_SYNC_MODE          => "FALSE",     -- string
+                    IS_CLK_EXT_INVERTED     => '0',         -- bit
+                    IS_CLK_INVERTED         => '0',         -- bit
+                    IS_RST_DLY_EXT_INVERTED => '0',         -- bit
+                    IS_RST_DLY_INVERTED     => '0',         -- bit
+                    IS_RST_INVERTED         => '0',         -- bit
+                    REFCLK_FREQUENCY        => 300.0,       -- real
+                    UPDATE_MODE             => "ASYNC",     -- string
+                    UPDATE_MODE_EXT         => "ASYNC",     -- string
+                    SIM_DEVICE              => "ULTRASCALE" -- string
+                    SIM_VERSION             => 2.0          -- real
+                )
+                port map (
+                    DATAIN              => $3, -- in
+                    FIFO_RD_CLK         => $4, -- in
+                    FIFO_RD_EN          => $5, -- in
+                    RX_BIT_CTRL_IN      => $6, -- in [39:0]
+                    TX_BIT_CTRL_IN      => $7, -- in [39:0]
+                    RX_BIT_CTRL_OUT     => $8, -- out [39:0]
+                    TX_BIT_CTRL_OUT     => $9, -- out [39:0]
+                    RST                 => $10, -- in
+                    CLK                 => $11, -- in
+                    CE                  => $12, -- in
+                    RST_DLY             => $13, -- in
+                    INC                 => $14, -- in
+                    LOAD                => $15, -- in
+                    EN_VTC              => $16, -- in
+                    CNTVALUEIN          => $17, -- in [8:0]
+                    CNTVALUEOUT         => $18, -- out [8:0]
+                    CLK_EXT             => $19, -- in
+                    CE_EXT              => $20, -- in
+                    RST_DLY_EXT         => $21, -- in
+                    INC_EXT             => $22, -- in
+                    LOAD_EXT            => $23, -- in
+                    EN_VTC_EXT          => $24, -- in
+                    CNTVALUEIN_EXT      => $25, -- in [8:0]
+                    CNTVALUEOUT_EXT     => $26, -- out [8:0]
+                    BIT_CTRL_OUT_EXT    => $27, -- out [28:0]
+                    FIFO_EMPTY          => $28, -- out
+                    FIFO_WRCLK_OUT      => $29, -- out
+                    Q                   => $30 -- out [7:0]
+                );
+        """
+    'SRLC32E':
+        'prefix': 'SRLC32E'
+        'body': """
+            ${1:FileName}_I_Srlc32e_${2:0} : SRLC32E
+                generic map (
+                    INIT            => X"00000000",
+                    IS_CLK_INVERTED => '0'
+                )
+                port map (
+                    D   => $3, -- in
+                    A   => $4, -- in [4:0]
+                    CE  => $5, -- in
+                    CLK => $6, -- in
+                    Q   => $7, -- out
+                    Q31 => $8 -- out
+                );
+        """
+
+    'STARTUPE2':
+        'prefix': 'STARTUPE2'
+        'body': """
+            ${1:FileName}_I_Startupe2_${2:0}  : STARTUPE2
+                generic map (
+                    PROG_USR        => "FALSE", -- string
+                    SIM_CCLK_FREQ   => 0.0      -- real
+                )
+                port map (
+                    USRDONEO    => $3, -- in
+                    USRDONETS   => $4, -- in
+                    KEYCLEARB   => $5, -- in
+                    PACK        => $6, -- in
+                    USRCCLKO    => $7, -- in
+                    USRCCLKTS   => $8, -- in
+                    CLK         => $9, -- in
+                    GSR         => $10, -- in
+                    GTS         => $11, -- in
+                    CFGCLK      => $12, -- out
+                    CFGMCLK     => $13, -- out
+                    EOS         => $14, -- out
+                    PREQ        => $15 -- out
+                );
+        """
+
+    'STARTUPE3':
+        'prefix': 'STARTUPE3'
+        'body': """
+            ${1:FileName}_I_Startupe3_${2:0}  : STARTUPE3
+                generic map : (
+                    PROG_USR        => "FALSE", -- string
+                    SIM_CCLK_FREQ   => 0.0      -- real
+                )
+                port map (
+                    USRDONEO    => $3, -- in
+                    USRDONETS   => $4, -- in
+                    KEYCLEARB   => $5, -- in
+                    PACK        => $6, -- in
+                    USRCCLKO    => $7, -- in
+                    USRCCLKTS   => $8, -- in
+                    GSR         => $9, -- in
+                    GTS         => $10, -- in
+                    DTS         => $11, -- in [3:0]
+                    FCSBO       => $12, -- in
+                    FCSBTS      => $13, -- in
+                    DO          => $14, -- in [3:0]
+                    DI          => $15, -- out [3:0]
+                    CFGCLK      => $16, -- out
+                    CFGMCLK     => $17, -- out
+                    EOS         => $18, -- out
+                    PREQ        => $19 -- out
+                );
+        """
+
+    'TX_BITSLICE':
+        'prefix': 'TX_BITSLICE'
+        'body': """
+            ${1:FileName}_I_Tx_Btslce_${2:0}  : TX_BITSLICE
+                generic map (
+                    DATA_WIDTH              => 8,           -- integer
+                    DELAY_FORMAT            => "TIME",      -- string
+                    DELAY_TYPE              => "FIXED",     -- string
+                    DELAY_VALUE             => 0,           -- integer
+                    INIT                    => '1',         -- bit
+                    IS_CLK_INVERTED         => '0',         -- bit
+                    IS_RST_DLY_INVERTED     => '0',         -- bit
+                    IS_RST_INVERTED         => '0',         -- bit
+                    NATIVE_ODELAY_BYPASS    => "FALSE",     -- string
+                    OUTPUT_PHASE_90         => "FALSE",     -- string
+                    ENABLE_PRE_EMPHASIS     => "OFF",       -- string
+                    REFCLK_FREQUENCY        => 300.0,       -- real
+                    TBYTE_CTL               => "TBYTE_IN",  -- string
+                    UPDATE_MODE             => "ASYNC",     -- string
+                    SIM_DEVICE : string     => "ULTRASCALE" -- string
+                    SIM_VERSION             => 2.0          -- real
+                )
+                port map (
+                    D               => $3, -- in [7:0]
+                    T               => $4, -- in
+                    TBYTE_IN        => $5, -- in
+                    RX_BIT_CTRL_IN  => $6, -- in [39:0]
+                    TX_BIT_CTRL_IN  => $7, -- in [39:0]
+                    RX_BIT_CTRL_OUT => $8, -- out [39:0]
+                    TX_BIT_CTRL_OUT => $9, -- out [39:0]
+                    RST             => $10, -- in
+                    CLK             => $11, -- in
+                    CE              => $12, -- in
+                    RST_DLY         => $13, -- in
+                    INC             => $14, -- in
+                    LOAD            => $15, -- in
+                    EN_VTC          => $16, -- in
+                    CNTVALUEIN      => $17, -- in [8:0]
+                    CNTVALUEOUT     => $18, -- out [8:0]
+                    O               => $19, -- out
+                    T_OUT           => $20 -- out
+                );
+        """
+
+    'TX_BITSLICE_TRI':
+        'prefix': 'TX_BITSLICE_TRI'
+        'body': """
+            ${1:FileName}_I_Tx_Btslce_Tri_${2:0}  : TX_BITSLICE_TRI
+                generic map (
+                    DATA_WIDTH              => 8,           -- integer
+                    DELAY_FORMAT            => "TIME",      -- string
+                    DELAY_TYPE              => "FIXED",     -- string
+                    DELAY_VALUE             => 0,           -- integer
+                    INIT                    => '1',         -- bit:
+                    IS_CLK_INVERTED         => '0',         -- bit:
+                    IS_RST_DLY_INVERTED     => '0',         -- bit:
+                    IS_RST_INVERTED         => '0',         -- bit:
+                    NATIVE_ODELAY_BYPASS    => "FALSE",     -- string
+                    OUTPUT_PHASE_90         => "FALSE",     -- string
+                    REFCLK_FREQUENCY        => 300.0,       -- real
+                    UPDATE_MODE             => "ASYNC"      -- string
+                    SIM_DEVICE              => "ULTRASCALE" -- string
+                    SIM_VESION              => 2.0          -- real
+                )
+                port map (
+                    BIT_CTRL_IN     => $3, -- in [39:0]
+                    BIT_CTRL_OUT    => $4, -- out [39:0]
+                    RST             => $5, -- in
+                    CLK             => $6, -- in
+                    CE              => $7, -- in
+                    RST_DLY         => $8, -- in
+                    INC             => $9, -- in
+                    LOAD            => $10, -- in
+                    EN_VTC          => $11, -- in
+                    CNTVALUEIN      => $12, -- in [8:0]
+                    CNTVALUEOUT     => $13, -- out [8:0]
+                    TRI_OUT         => $14 -- out
+                );
+        """
+
+    'URAM288':
+        'prefix': 'URAM288'
+        'body': """
+            ${1:FileName}_I_Uram288_${2:0}  : URAM288
+                generic map (
+                    AUTO_SLEEP_LATENCY        => 8,                     -- integer
+                    AVG_CONS_INACTIVE_CYCLES  => 10,                    -- integer
+                    BWE_MODE_A                => "PARITY_INTERLEAVED",  -- string
+                    BWE_MODE_B                => "PARITY_INTERLEAVED",  -- string
+                    CASCADE_ORDER_A           => "NONE",                -- string
+                    CASCADE_ORDER_B           => "NONE",                -- string
+                    EN_AUTO_SLEEP_MODE        => "FALSE",               -- string
+                    EN_ECC_RD_A               => "FALSE",               -- string
+                    EN_ECC_RD_B               => "FALSE",               -- string
+                    EN_ECC_WR_A               => "FALSE",               -- string
+                    EN_ECC_WR_B               => "FALSE",               -- string
+                    IREG_PRE_A                => "FALSE",               -- string
+                    IREG_PRE_B                => "FALSE",               -- string
+                    IS_CLK_INVERTED           => '0',                   -- bit
+                    IS_EN_A_INVERTED          => '0',                   -- bit
+                    IS_EN_B_INVERTED          => '0',                   -- bit
+                    IS_RDB_WR_A_INVERTED      => '0',                   -- bit
+                    IS_RDB_WR_B_INVERTED      => '0',                   -- bit
+                    IS_RST_A_INVERTED         => '0',                   -- bit
+                    IS_RST_B_INVERTED         => '0',                   -- bit
+                    MATRIX_ID                 => "NONE",                -- string
+                    NUM_UNIQUE_SELF_ADDR_A    => 1,                     -- integer
+                    NUM_UNIQUE_SELF_ADDR_B    => 1,                     -- integer
+                    NUM_URAM_IN_MATRIX        => 1,                     -- integer
+                    OREG_A                    => "FALSE",               -- string
+                    OREG_B                    => "FALSE",               -- string
+                    OREG_ECC_A                => "FALSE",               -- string
+                    OREG_ECC_B                => "FALSE",               -- string
+                    REG_CAS_A                 => "FALSE",               -- string
+                    REG_CAS_B                 => "FALSE",               -- string
+                    RST_MODE_A                => "SYNC",                -- string
+                    RST_MODE_B                => "SYNC",                -- string
+                    SELF_ADDR_A               => "000" & X"00",         -- [10 downto 0)
+                    SELF_ADDR_B               => "000" & X"00",         -- [10 downto 0)
+                    SELF_MASK_A               => "111" & X"FF",         -- [10 downto 0)
+                    SELF_MASK_B               => "111" & X"FF",         -- [10 downto 0)
+                    USE_EXT_CE_A              => "FALSE",               -- string
+                    USE_EXT_CE_B              => "FALSE"               -- string
+                )
+                port map (
+                    DIN_A                     => $3, -- in [71:0]
+                    ADDR_A                    => $4, -- in [22:0]
+                    EN_A                      => $5, -- in
+                    RDB_WR_A                  => $6, -- in
+                    BWE_A                     => $7, -- in [8:0]
+                    INJECT_SBITERR_A          => $8, -- in
+                    INJECT_DBITERR_A          => $9, -- in
+                    OREG_CE_A                 => $10, -- in
+                    OREG_ECC_CE_A             => $11, -- in
+                    RST_A                     => $12, -- in
+                    DOUT_A                    => $13, -- out [71:0]
+                    SBITERR_A                 => $14, -- out
+                    DBITERR_A                 => $15, -- out
+                    RDACCESS_A                => $16, -- out
+                    SLEEP                     => $17, -- in
+                    CLK                       => $18, -- in
+                    DIN_B                     => $19, -- in [71:0]
+                    ADDR_B                    => $20, -- in [22:0]
+                    EN_B                      => $21, -- in
+                    RDB_WR_B                  => $22, -- in
+                    BWE_B                     => $23, -- in [8:0]
+                    INJECT_SBITERR_B          => $24, -- in
+                    INJECT_DBITERR_B          => $25, -- in
+                    OREG_CE_B                 => $26, -- in
+                    OREG_ECC_CE_B             => $27, -- in
+                    RST_B                     => $28, -- in
+                    DOUT_B                    => $29, -- out [71:0]
+                    SBITERR_B                 => $30, -- out
+                    DBITERR_B                 => $31, -- out
+                    RDACCESS_B                => $32, -- out
+                    CAS_IN_ADDR_A             => $33, -- in [22:0]
+                    CAS_IN_ADDR_B             => $34, -- in [22:0]
+                    CAS_IN_BWE_A              => $35, -- in [8:0]
+                    CAS_IN_BWE_B              => $36, -- in [8:0]
+                    CAS_IN_DBITERR_A          => $37, -- in
+                    CAS_IN_DBITERR_B          => $38, -- in
+                    CAS_IN_DIN_A              => $39, -- in [71:0]
+                    CAS_IN_DIN_B              => $40, -- in [71:0]
+                    CAS_IN_DOUT_A             => $41, -- in [71:0]
+                    CAS_IN_DOUT_B             => $42, -- in [71:0]
+                    CAS_IN_EN_A               => $43, -- in
+                    CAS_IN_EN_B               => $44, -- in
+                    CAS_IN_RDACCESS_A         => $45, -- in
+                    CAS_IN_RDACCESS_B         => $46, -- in
+                    CAS_IN_RDB_WR_A           => $47, -- in
+                    CAS_IN_RDB_WR_B           => $48, -- in
+                    CAS_IN_SBITERR_A          => $49, -- in
+                    CAS_IN_SBITERR_B          => $50, -- in
+                    CAS_OUT_ADDR_A            => $51, -- out [22:0]
+                    CAS_OUT_ADDR_B            => $52, -- out [22:0]
+                    CAS_OUT_BWE_A             => $53, -- out [8:0]
+                    CAS_OUT_BWE_B             => $54, -- out [8:0]
+                    CAS_OUT_DBITERR_A         => $55, -- out
+                    CAS_OUT_DBITERR_B         => $56, -- out
+                    CAS_OUT_DIN_A             => $57, -- out [71:0]
+                    CAS_OUT_DIN_B             => $58, -- out [71:0]
+                    CAS_OUT_DOUT_A            => $59, -- out [71:0]
+                    CAS_OUT_DOUT_B            => $60, -- out [71:0]
+                    CAS_OUT_EN_A              => $61, -- out
+                    CAS_OUT_EN_B              => $62, -- out
+                    CAS_OUT_RDACCESS_A        => $63, -- out
+                    CAS_OUT_RDACCESS_B        => $64, -- out
+                    CAS_OUT_RDB_WR_A          => $65, -- out
+                    CAS_OUT_RDB_WR_B          => $66, -- out
+                    CAS_OUT_SBITERR_A         => $67, -- out
+                    CAS_OUT_SBITERR_B         => $68 -- out
+                );
+        """
+
+    'URAM288E5':
+        'prefix': 'URAM288E5'
+        'body': """
+            ${1:FileName}_I_Uram288e5_${2:0}  : URAM288E5
+                generic map (
+                    INIT_FILE                   => "NONE",               -- string
+                    BWE_MODE_A                  => "PARITY_INTERLEAVED", -- string
+                    BWE_MODE_B                  => "PARITY_INTERLEAVED", -- string
+                    READ_WIDTH_A                => 72,                   -- integer
+                    READ_WIDTH_B                => 72,                   -- integer
+                    WRITE_WIDTH_A               => 72,                   -- integer
+                    WRITE_WIDTH_B               => 72,                   -- integer
+                    IREG_PRE_A                  => "FALSE",              -- string
+                    IREG_PRE_B                  => "FALSE",              -- string
+                    OREG_A                      => "FALSE",              -- string
+                    OREG_B                      => "FALSE",              -- string
+                    OREG_ECC_A                  => "FALSE",              -- string
+                    OREG_ECC_B                  => "FALSE",              -- string
+                    REG_CAS_A                   => "FALSE",              -- string
+                    REG_CAS_B                   => "FALSE",              -- string
+                    RST_MODE_A                  => "SYNC",               -- string
+                    RST_MODE_B                  => "SYNC",               -- string
+                    SELF_ADDR_A                 => "000" & X"00",        -- [10:0]
+                    SELF_ADDR_B                 => "000" & X"00",        -- [10:0]
+                    SELF_MASK_A                 => "111" & X"FF",        -- [10:0]
+                    SELF_MASK_B                 => "111" & X"FF",        -- [10:0]
+                    USE_EXT_CE_A                => "FALSE",              -- string
+                    USE_EXT_CE_B                => "FALSE",              -- string
+                    CASCADE_ORDER_CTRL_A        => "NONE",               -- string
+                    CASCADE_ORDER_CTRL_B        => "NONE",               -- string
+                    CASCADE_ORDER_DATA_A        => "NONE",               -- string
+                    CASCADE_ORDER_DATA_B        => "NONE",               -- string
+                    AUTO_SLEEP_LATENCY          => 8,                    -- integer
+                    EN_AUTO_SLEEP_MODE          => "FALSE",              -- string
+                    AVG_CONS_INACTIVE_CYCLES    => 10,                   -- integer
+                    EN_ECC_RD_A                 => "FALSE",              -- string
+                    EN_ECC_RD_B                 => "FALSE",              -- string
+                    EN_ECC_WR_A                 => "FALSE",              -- string
+                    EN_ECC_WR_B                 => "FALSE",              -- string
+                    MATRIX_ID                   => "NONE",               -- string
+                    NUM_UNIQUE_SELF_ADDR_A      => 1,                    -- integer
+                    NUM_UNIQUE_SELF_ADDR_B      => 1,                    -- integer
+                    NUM_URAM_IN_MATRIX          => 1,                    -- integer
+                    PR_SAVE_DATA                => "FALSE",              -- string
+                    IS_CLK_INVERTED             => '0',                  -- bit
+                    IS_EN_A_INVERTED            => '0',                  -- bit
+                    IS_EN_B_INVERTED            => '0',                  -- bit
+                    IS_RDB_WR_A_INVERTED        => '0',                  -- bit
+                    IS_RDB_WR_B_INVERTED        => '0',                  -- bit
+                    IS_RST_A_INVERTED           => '0',                  -- bit
+                    IS_RST_B_INVERTED           => '0'                  -- bit
+                )
+                port map (
+                    DIN_A               => $3, -- in  [71:0]
+                    ADDR_A              => $4, -- in  [25:0]
+                    EN_A                => $5, -- in
+                    RDB_WR_A            => $6, -- in
+                    BWE_A               => $7, -- in  [8:0]
+                    INJECT_SBITERR_A    => $8, -- in
+                    INJECT_DBITERR_A    => $9, -- in
+                    OREG_CE_A           => $10, -- in
+                    OREG_ECC_CE_A       => $11, -- in
+                    RST_A               => $12, -- in
+                    SLEEP               => $13, -- in
+                    CLK                 => $14, -- in
+                    DIN_B               => $15, -- in  [71:0]
+                    ADDR_B              => $16, -- in  [25:0]
+                    EN_B                => $17, -- in
+                    RDB_WR_B            => $18, -- in
+                    BWE_B               => $19, -- in  [8:0]
+                    INJECT_SBITERR_B    => $20, -- in
+                    INJECT_DBITERR_B    => $21, -- in
+                    OREG_CE_B           => $22, -- in
+                    OREG_ECC_CE_B       => $23, -- in
+                    RST_B               => $24, -- in
+                    DOUT_A              => $25, -- out [71:0]
+                    SBITERR_A           => $26, -- out
+                    DBITERR_A           => $27, -- out
+                    RDACCESS_A          => $28, -- out
+                    DOUT_B              => $29, -- out [71:0]
+                    SBITERR_B           => $30, -- out
+                    DBITERR_B           => $31, -- out
+                    RDACCESS_B          => $32, -- out
+                    CAS_IN_ADDR_A       => $33, -- in  [25:0]
+                    CAS_IN_ADDR_B       => $34, -- in  [25:0]
+                    CAS_IN_BWE_A        => $35, -- in  [8:0]
+                    CAS_IN_BWE_B        => $36, -- in  [8:0]
+                    CAS_IN_DBITERR_A    => $37, -- in
+                    CAS_IN_DBITERR_B    => $38, -- in
+                    CAS_IN_DIN_A        => $39, -- in  [71:0]
+                    CAS_IN_DIN_B        => $40, -- in  [71:0]
+                    CAS_IN_DOUT_A       => $41, -- in  [71:0]
+                    CAS_IN_DOUT_B       => $42, -- in  [71:0]
+                    CAS_IN_EN_A         => $43, -- in
+                    CAS_IN_EN_B         => $44, -- in
+                    CAS_IN_RDACCESS_A   => $45, -- in
+                    CAS_IN_RDACCESS_B   => $46, -- in
+                    CAS_IN_RDB_WR_A     => $47, -- in
+                    CAS_IN_RDB_WR_B     => $48, -- in
+                    CAS_IN_SBITERR_A    => $49, -- in
+                    CAS_IN_SBITERR_B    => $50, -- in
+                    CAS_OUT_ADDR_A      => $51, -- out [25:0]
+                    CAS_OUT_ADDR_B      => $52, -- out [25:0]
+                    CAS_OUT_BWE_A       => $53, -- out [8:0]
+                    CAS_OUT_BWE_B       => $54, -- out [8:0]
+                    CAS_OUT_DBITERR_A   => $55, -- out
+                    CAS_OUT_DBITERR_B   => $56, -- out
+                    CAS_OUT_DIN_A       => $57, -- out [71:0]
+                    CAS_OUT_DIN_B       => $58, -- out [71:0]
+                    CAS_OUT_DOUT_A      => $59, -- out [71:0]
+                    CAS_OUT_DOUT_B      => $60, -- out [71:0]
+                    CAS_OUT_EN_A        => $61, -- out
+                    CAS_OUT_EN_B        => $62, -- out
+                    CAS_OUT_RDACCESS_A  => $63, -- out
+                    CAS_OUT_RDACCESS_B  => $64, -- out
+                    CAS_OUT_RDB_WR_A    => $65, -- out
+                    CAS_OUT_RDB_WR_B    => $66, -- out
+                    CAS_OUT_SBITERR_A   => $67, -- out
+                    CAS_OUT_SBITERR_B   => $68 -- out
+                );
+        """
+
+    'USR_ACCESSE2':
+        'prefix': 'USR_ACCESSE2'
+        'body': """
+            ${1:FileName}_I_Usr_Access_${2:0}  : USR_ACCESSE2
+                port map (
+                    CFGCLK      => $3, -- out
+                    DATA        => $4, -- out [31:0]
+                    DATAVALID   => $5 -- out
+                );
+        """
+
+    'XORCY':
+        'prefix': 'XORCY'
+        'body': """
+            $1 : XORCY
+                port map (
+                    CI  => $3, -- in
+                    LI  => $4, -- in
+                    O   => $5 -- out
+                );
+        """
+
+    'XPLL':
+        'prefix': 'XPLL'
+        'body': """
+            ${1:FileName}_I_Xpll_${2:0}  : XPLL
+                generic map (
+                    CLKIN_PERIOD            => 0.000,   -- real
+                    REF_JITTER              => 0.010,   -- real
+                    DIVCLK_DIVIDE           => 1,       -- integer
+                    CLKFBOUT_MULT           => 42,      -- integer
+                    CLKFBOUT_PHASE          => 0.000,   -- real
+                    CLKOUT0_DIVIDE          => 2,       -- integer
+                    CLKOUT0_DUTY_CYCLE      => 0.500,   -- real
+                    CLKOUT0_PHASE           => 0.000,   -- real
+                    CLKOUT0_PHASE_CTRL      => "00",    -- std_logic_vector[1:0]
+                    CLKOUT1_DIVIDE          => 2,       -- integer
+                    CLKOUT1_DUTY_CYCLE      => 0.500,   -- real
+                    CLKOUT1_PHASE           => 0.000,   -- real
+                    CLKOUT1_PHASE_CTRL      => "00",    -- std_logic_vector[1:0]
+                    CLKOUT2_DIVIDE          => 2,       -- integer
+                    CLKOUT2_DUTY_CYCLE      => 0.500,   -- real
+                    CLKOUT2_PHASE           => 0.000,   -- real
+                    CLKOUT2_PHASE_CTRL      => "00",    -- std_logic_vector[1:0]
+                    CLKOUT3_DIVIDE          => 2,       -- integer
+                    CLKOUT3_DUTY_CYCLE      => 0.500,   -- real
+                    CLKOUT3_PHASE           => 0.000,   -- real
+                    CLKOUT3_PHASE_CTRL      => "00",    -- std_logic_vector[1:0]
+                    CLKOUTPHY_DIVIDE        => "DIV8",  -- string
+                    DESKEW_DELAY1           => 0,       -- integer
+                    DESKEW_DELAY2           => 0,       -- integer
+                    DESKEW_DELAY_EN1        => "FALSE", -- string
+                    DESKEW_DELAY_EN2        => "FALSE", -- string
+                    DESKEW_DELAY_PATH1      => "FALSE", -- string
+                    DESKEW_DELAY_PATH2      => "FALSE", -- string
+                    IS_CLKIN_INVERTED       => '0',     -- bit
+                    IS_PSEN_INVERTED        => '0',     -- bit
+                    IS_PSINCDEC_INVERTED    => '0',     -- bit
+                    IS_PWRDWN_INVERTED      => '0',     -- bit
+                    IS_RST_INVERTED         => '0'     -- bit
+                )
+                port map (
+                    CLKIN1_DESKEW   => $3, -- in
+                    CLKFB1_DESKEW   => $4, -- in
+                    CLKFB2_DESKEW   => $5, -- in
+                    CLKIN2_DESKEW   => $6, -- in
+                    CLKIN           => $7, -- in
+                    RST             => $8, -- in
+                    PWRDWN          => $9, -- in
+                    CLKOUTPHYEN     => $10, -- in
+                    CLKOUT0         => $11, -- out
+                    CLKOUT1         => $12, -- out
+                    CLKOUT2         => $13, -- out
+                    CLKOUT3         => $14, -- out
+                    CLKOUTPHY       => $15, -- out
+                    PSCLK           => $16, -- in
+                    PSEN            => $17, -- in
+                    PSINCDEC        => $18, -- in
+                    PSDONE          => $19, -- out
+                    DCLK            => $20, -- in
+                    DEN             => $21, -- in
+                    DWE             => $22, -- in
+                    DADDR           => $23, -- in [6:0]
+                    DI              => $24, -- in [15:0]
+                    DO              => $25, -- out [15:0]
+                    DRDY            => $26, -- out
+                    RIU_CLK         => $27, -- in
+                    RIU_NIBBLE_SEL  => $28, -- in
+                    RIU_WR_EN       => $29, -- in
+                    RIU_ADDR        => $30, -- in [7:0]
+                    RIU_WR_DATA     => $31, -- in [15:0]
+                    RIU_RD_DATA     => $32, -- out [15:0]
+                    RIU_VALID       => $33, -- out
+                    LOCKED1_DESKEW  => $34, -- out
+                    LOCKED2_DESKEW  => $35, -- out
+                    LOCKED_FB       => $36, -- out
+                    LOCKED          => $37 -- out
+                );
+        """
+
+    'ZHOLD_DELAY':
+        'prefix': 'ZHOLD_DELAY'
+        'body': """
+            ${1:FileName}_I_Zhld_Dly_${2:0}  : ZHOLD_DELAY
+                generic map (
+                    IS_DLYIN_INVERTED   => '0',         -- bit
+                    ZHOLD_FABRIC        => "DEFAULT",   -- string
+                    ZHOLD_IFF           => "DEFAULT"    -- string
+                )
+                port map (
+                    DLYFABRIC   => $3, -- out
+                    DLYIFF      => $4, -- out
+                    DLYIN       => $5 -- in
+                );
+        """

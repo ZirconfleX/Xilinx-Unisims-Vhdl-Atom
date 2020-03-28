@@ -1,0 +1,26 @@
+{
+  "context-menu": {
+    "atom-text-editor": [
+      {
+        "label": "Toggle xilinx-unisims",
+        "command": "xilinx-unisims:toggle"
+      }
+    ]
+  },
+  "menu": [
+    {
+      "label": "Packages",
+      "submenu": [
+        {
+          "label": "xilinx-unisims",
+          "submenu": [
+            {
+              "label": "Toggle",
+              "command": "xilinx-unisims:toggle"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
