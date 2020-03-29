@@ -6,6 +6,7 @@ Xilinx FPGA Unsim libraries are or can be used to instantiate hardware dedicated
 available in the different FPGA families, elements such as PLL, MMCM , LUT, ...
 
 **Remark 1:** This package replaces the "Xilinx-Snippets" package.
+
 **Remark 2:** A similar extension for VScode can be found [here](https://github.com/ZirconfleX/Xilinx-Snippets-Vhdl-VScode)
 
 ### Supported  FPGA families
