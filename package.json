@@ -1,7 +1,7 @@
 {
   "name": "xilinx-unisims",
   "main": "./lib/xilinx-unisims",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "VHDL Unisim Primitives Snippets for Xilinx FPGAs.",
   "keywords": [],
   "activationCommands": {
